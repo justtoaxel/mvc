@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/glider.svg') }}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+    
+    <header class="site-header" style="background-image: url({{ asset('img/background.jpg') }}); background-repeat: no-repeat;">
+    <span class="site-title">My Symfony Site</span>
+    </header>
+       
+        <nav>
+            <ul>
+                <li><a href="{{ path('home') }}">Home</a></li>
+                <li><a href="{{ path('about') }}">About</a></li>
+                <li><a href="{{ path('lucky_number') }}">Lucky number</a></li>
+                <li><a href="{{ path('report') }}">Report</a></li>
+            </ul>
+        </nav>
+
+        <main>{% block body %}{% endblock %}</main>
+        <footer>{% block footer %}
+        
+        <div class="row">
+        <div class="column" style="">
+            <h2>Column 1</h2>
+            <p>Some text..</p>
+        </div>
+        <div class="column" style="">
+            <ul>
+                <li><a href="{{ path('home') }}">Home</a></li>
+                <li><a href="{{ path('about') }}">About</a></li>
+                <li><a href="{{ path('lucky_number') }}">Lucky number</a></li>
+            </ul>
+        </div>
+        </div>
+
+        {% endblock %}</footer>
+    </body>
+</html>
