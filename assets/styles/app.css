@@ -1,10 +1,11 @@
 body {
     margin: 0 auto;
+    font-family: "Lato", sans-serif;
 }
 
 main {
     margin: 0 auto;
-    max-width: 760px;
+    max-width: 90%;
 }
 
 h1 {
@@ -13,7 +14,7 @@ h1 {
 
 a {
     text-decoration: none;
-    color: #f2f2f2;
+    color: black;
 }
 
 ul {
@@ -57,13 +58,13 @@ nav {
 }
 
 footer {
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: #1abc9c;
     color: white;
     text-align: center;
+    margin-top: 10%;
  }
 
  /* Create three equal columns that floats next to each other */
@@ -79,3 +80,32 @@ footer {
     display: table;
     clear: both;
   }
+
+
+  
+.two-col-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width:1920px;
+  margin: 0 auto;
+}
+
+.two-col-layout > .main {
+  width: calc(100% / 16 * 12); /* 12/16 width */
+}
+
+.two-col-layout > .aside {
+  width: calc(100% / 16 * 4); /* 4/16 width */
+}
+
+.aside {
+  border-right: 1px solid #ccc;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 24px;
+}
+
+.aside h4 {
+  border-bottom: 1px solid #ccc;
+}

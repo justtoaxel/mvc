@@ -3,9 +3,26 @@
 {% block title %}About{% endblock %}
 
 {% block body %}
-    <h1>About</h1>
-    <p>An image which can be clicked on.</p>
-    <a href="{{ asset('img/glider.svg') }}">
-        <img src="{{ asset('img/glider.svg') }}" alt="">
+
+<article class="article">
+        <header class="header">
+</header>
+        <div class="page-container">
+  <div class="row">
+  <div class="column" style="">
+  <h1>Om Kursen</h1>
+   <p>Kursen Objektorienterade webbteknologier, förkortad; mvc, fokuserar på objektorienterade programmeringstekniker i programmeringsspråket PHP.</p>
+    <p>Klassiska objektorienterade konstruktioner hanteras tillsammans med objektorienterad programmering i webbaserat ramverk tillsammans med databaser samt enhetstestning.</p>
+    <p>Länk till Kursens Github Repo: <a href="https://github.com/dbwebb-se/mvc">https://github.com/dbwebb-se/mvc</a>
+     <p>Länk till denna sidas Github Repo: <a href="https://github.com/justtoaxel/mvc">https://github.com/justtoaxel/mvc</a></p>
+  </div>
+  <div class="column" style="">
+  <figure class="figure right">
+            <p>En representativ bild av jag när jag fastnat på ett problem i flera timmar</p>
+    <a href="{{ asset('img/crying.jpg') }}">
+        <img src="{{ asset('img/crying.jpg') }}" alt="">
     </a>
+  </div>
+</div>
+    </div>
 {% endblock %}
