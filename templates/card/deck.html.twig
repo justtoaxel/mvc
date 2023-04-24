@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Report{% endblock %}
+
+{% block body %}
+    <div class="two-col-layout">
+    <main class="main">
+        <article class="article">
+        <h1>Kortleken</h1>
+
+    <h2 id="kmom1">Se kortleken under</h2>
+
+    <div class="card"
+
+    </div>
+    <ul>
+        <li style="font-size: 80px;">{{ getDeck }}</li>
+        <li style="font-size: 80px;"></li>
+    </ul>
+
+        </article>
+    </main>
+
+    <aside class="aside">
+        <h2>Innehållsförteckning</h2>
+        <a href="{{ path('card_deck') }}"><h3>Show Deck</h3></a>
+        <a href="#kmom2"><h3>Kursmoment 2</h3></a>
+        <a href="#kmom3"><h3>Kursmoment 3</h3></a>
+        <a href="#kmom4"><h3>Kursmoment 4</h3></a>
+    </aside>
+</div>
+{% endblock %}

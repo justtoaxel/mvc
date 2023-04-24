@@ -22,12 +22,12 @@ class LuckyControllerJson
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
-        $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
     }
 
-    #[Route("/api/quote" , name: "quote")]
+    #[Route("/api/quote", name: "quote")]
     public function jsonQuote(): Response
     {
 
@@ -41,7 +41,7 @@ class LuckyControllerJson
             2 => 'To know how much there is to know is the beginning of learning to live.'
         );
 
-        $quoteIndex = array_rand($quotesArray,1);
+        $quoteIndex = array_rand($quotesArray, 1);
         $quote = $quotesArray[$quoteIndex];
 
         $data = [
