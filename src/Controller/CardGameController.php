@@ -24,11 +24,11 @@ class CardGameController extends AbstractController
         $deck = new Deck();
 
         $data = [
-            'getDeck' => $deck->getDeck(),
-
+            'getDeck' => $deck,
         ];
 
         $response = new JsonResponse($data);
+        $response->setContent(json_encode($data, JSON_UNESCAPED_UNICODE));
         $response->setEncodingOptions(
         $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
