@@ -101,7 +101,7 @@ class LuckyControllerJson extends AbstractController
         return $response;
     }
 
-    #[Route("/api/deck/shuffle", name: "api_shuffle")]
+    #[Route("/api/deck/shuffle", name: "api_shuffle", methods: ['POST'])]
     public function jsonShuffle(
         Request $request,
         SessionInterface $session
@@ -141,7 +141,7 @@ class LuckyControllerJson extends AbstractController
         return $response;
     }
 
-    #[Route("/api/deck/draw", name: "api_drawOne")]
+    #[Route("/api/deck/draw", name: "api_drawOne", methods: ['POST'])]
     public function jsonDrawOne(
         Request $request,
         SessionInterface $session
@@ -172,7 +172,7 @@ class LuckyControllerJson extends AbstractController
         return $response;
     }
 
-    #[Route("/api/deck/draw/{num<\d+>}", name: "api_drawSeveral")]
+    #[Route("/api/deck/draw/{num<\d+>}", name: "api_drawSeveral", methods: ['POST'])]
     public function jsonDrawSeveral(
         int $num,
         Request $request,

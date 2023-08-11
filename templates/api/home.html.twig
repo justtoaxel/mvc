@@ -16,6 +16,19 @@
             <a href="{{ path('api_drawOne') }}"><h3>API Draw One</h3></a>
             <a href="{{ path('api_drawSeveral', {num: 5}) }}"><h3>API Draw Several</h3></a>
         </ul>
+        <form method="post" action="">
+    <p>
+        <input type="submit" name="roll" value="Shuffle"
+            onClick="this.form.action='{{ path('api_shuffle') }}';"
+        >
+        <input type="submit" name="save" value="Draw One"
+            onClick="this.form.action='{{ path('api_drawOne') }}';"
+        >
+        <input type="submit" name="restart" value="Draw Several"
+            onClick="this.form.action='{{ path('api_drawSeveral', {num: 5}) }}';"
+        >
+    </p>
+</form>
         </article>
     </main>
 
