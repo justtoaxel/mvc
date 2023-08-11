@@ -13,65 +13,16 @@ use App\Card\Hand;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class LuckyControllerJson extends AbstractController
+class GameController extends AbstractController
 {
-    #[Route("/api/lucky/number")]
-    public function jsonNumber(): Response
-    {
-        $number = random_int(0, 100);
-
-        $myArray = ["“Learn as if you will live forever, live like you will die tomorrow.”", "“Experience is a hard teacher because she gives the test first, the lesson afterwards.”", "“To know how much there is to know is the beginning of learning to live.”"];
-
-        $data = [
-            'lucky-number' => $number,
-            'lucky-message' => 'Hi there!',
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-    }
-
-    #[Route("/api/quote", name: "quote")]
-    public function jsonQuote(): Response
-    {
-
-        $number = random_int(0, 100);
-
-        $today = $date = date('Y-m-d H:i:s');
-
-        $quotesArray = array(
-            0 => 'Learn as if you will live forever, live like you will die tomorrow.',
-            1 => 'Experience is a hard teacher because she gives the test first, the lesson afterwards.',
-            2 => 'To know how much there is to know is the beginning of learning to live.'
-        );
-
-        $quoteIndex = array_rand($quotesArray, 1);
-        $quote = $quotesArray[$quoteIndex];
-
-        $data = [
-            'Quote' => $quote,
-            'Message' => 'Quote of the day',
-            'This quote was generated:' => $today,
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-    }
-
-    #[Route("api", name: "api")]
+    #[Route("card", name: "card_start")]
     public function home(): Response
     {
-        return $this->render('api/home.html.twig');
+        return $this->render('card/home.html.twig');
     }
 
-    #[Route("/api/deck", name: "api_deck")]
-    public function jsonDeck(
+    #[Route("card/deck", name: "show_deck", methods: ['GET'])]
+    public function deckShow(
         Request $request,
         SessionInterface $session
     ): Response {
@@ -94,15 +45,12 @@ class LuckyControllerJson extends AbstractController
             "cardDeck" => $cardDeck
         ];
 
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
+
+        return $this->render('card/deck.html.twig', $data);
     }
 
-    #[Route("/api/deck/shuffle", name: "api_shuffle")]
-    public function jsonShuffle(
+    #[Route("card/shuffle", name: "shuffle_deck", methods: ['GET'])]
+    public function deckShuffle(
         Request $request,
         SessionInterface $session
     ): Response {
@@ -134,15 +82,12 @@ class LuckyControllerJson extends AbstractController
             "cardDeck" => $shuffledDeck
         ];
 
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
+        return $this->render('card/deck_shuffle.html.twig', $data);
+
     }
 
-    #[Route("/api/deck/draw", name: "api_drawOne")]
-    public function jsonDrawOne(
+    #[Route("card/draw", name: "draw_one", methods: ['GET'])]
+    public function drawOne(
         Request $request,
         SessionInterface $session
     ): Response {
@@ -165,15 +110,12 @@ class LuckyControllerJson extends AbstractController
             "deckQuantity" => $deckQuantity
         ];
 
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
+        return $this->render('card/draw.html.twig', $data);
+
     }
 
-    #[Route("/api/deck/draw/{num<\d+>}", name: "api_drawSeveral")]
-    public function jsonDrawSeveral(
+    #[Route("card/draw/{num<\d+>}", name: "draw_several", methods: ['GET'])]
+    public function drawSeveral(
         int $num,
         Request $request,
         SessionInterface $session
@@ -200,11 +142,8 @@ class LuckyControllerJson extends AbstractController
             "deckQuantity" => $deckQuantity
         ];
 
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
+        return $this->render('card/draw.html.twig', $data);
+
     }
 
 }

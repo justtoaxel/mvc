@@ -9,17 +9,22 @@
         <h1>Kortleken</h1>
 
     <h2 id="kmom1">Se kortleken under</h2>
-    <p>{{ cardString }}</p>
+    <ul>
+    {% for values in drawnCards %}
+        <li class="cards">{{ values }}</li>
+    {% endfor %}
+    </ul>
+    <p class="cards">{{ deckQuantity }}</p>
 
         </article>
     </main>
 
     <aside class="aside">
-        <h2>Innehållsförteckning</h2>
-        <a href="{{ path('card_deck') }}"><h3>Show Deck</h3></a>
-        <a href="#kmom2"><h3>Kursmoment 2</h3></a>
-        <a href="#kmom3"><h3>Kursmoment 3</h3></a>
-        <a href="#kmom4"><h3>Kursmoment 4</h3></a>
+        <h2>Innehåll</h2>
+        <a href="{{ path('show_deck') }}"><h3>Show Deck</h3></a>
+        <a href="{{ path('shuffle_deck') }}"><h3>Shuffle Deck</h3></a>
+        <a href="{{ path('draw_one') }}"><h3>Draw 1 Card</h3></a>
+        <a href="{{ path('draw_several', {num: 5}) }}""><h3>Draw 5 Cards</h3></a>
     </aside>
 </div>
 {% endblock %}

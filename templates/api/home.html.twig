@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Report{% endblock %}
+
+{% block body %}
+    <div class="two-col-layout">
+    <main class="main">
+        <article class="article">
+        <h1>Kurs Rapporter</h1>
+
+    <h2 id="kmom1">JSON-Routes</h2>
+    <ul>
+            <a href="{{ path('quote') }}"><h3>Random Quote and Current Date/Time</h3></a>
+            <a href="{{ path('api_deck') }}"><h3>Show a whole deck in order</h3></a>
+            <a href="{{ path('api_shuffle') }}"><h3>Show shuffled deck</h3></a>
+            <a href="{{ path('api_drawOne') }}"><h3>API Draw One</h3></a>
+            <a href="{{ path('api_drawSeveral', {num: 5}) }}"><h3>API Draw Several</h3></a>
+        </ul>
+        </article>
+    </main>
+
+</div>
+{% endblock %}

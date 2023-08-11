@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Report{% endblock %}
+
+{% block body %}
+    <div class="two-col-layout">
+    <main class="main">
+        <article class="article">
+        <h1>Draw Several Card</h1>
+
+<p>You drew {{ num_cards }} cards. Here is the value of the cards</p>
+
+<ul>
+{% for draw in cardDraw %}
+    <li class="cards">{{ draw }}</li>
+{% endfor %}
+</ul>
+
+<p>Try to draw 
+    <a href="{{ path('card_draw_several', {num: 5}) }}">5</a>
+    or 
+    <a href="{{ path('card_draw_several', {num: 10}) }}">10</a>
+    cards.
+</p>
+
+        </article>
+    </main>
+
+    <aside class="aside">
+        <h2>Innehållsförteckning</h2>
+        <a href="{{ path('show_deck', {num: 52}) }}"><h3>Show Deck</h3></a>
+        <a href="#kmom2"><h3>Kursmoment 2</h3></a>
+        <a href="#kmom3"><h3>Kursmoment 3</h3></a>
+        <a href="#kmom4"><h3>Kursmoment 4</h3></a>
+    </aside>
+</div>
+{% endblock %}
