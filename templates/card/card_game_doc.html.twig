@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dokumentation om 21{% endblock %}
+
+{% block body %}
+    <div class="two-col-layout">
+    <main class="main">
+        <article class="article">
+        <h1>/Dokumentation om Kortspelet 21</h1>
+
+    <h2 id="kmom1">Flödeschema för Spelet</h2>
+    <a href="{{ asset('img/Flowchart.png') }}">
+        <img src="{{ asset('img/Flowchart.png') }}" alt="">
+    </a>
+    <h2 id="kmom1">Pseudokod för Sanolikhet-Funktionen</h2>
+    <ul>
+    <p>
+    Formula för att räkna ut sanolikhet är [4m – n(x)]/(52m – N), för att kunna ge uträkning åt banken och spelaren måste vi definiera variabler för formeln
+
+    $n(x) = ($handValue - 22) 
+        antalet kort som dragits med värde som gör att spelaren får 22.
+
+    m = 1 deck
+
+    n = totala antalet kort som dragits count(hand)
+    </p>
+    </ul>
+    <h2 id="kmom1">Klasserna som används i Spelet</h2>
+    </article>
+    </main>
+
+</div>
+{% endblock %}

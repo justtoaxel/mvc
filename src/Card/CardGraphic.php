@@ -68,4 +68,5 @@ class CardGraphic extends Card
     {
         return $this->representation[$index];
     }
+
 }

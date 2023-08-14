@@ -15,9 +15,12 @@ class Hand
 
     public function getHand(): array
     {
-
         return $this->hand;
+    }
 
+    public function valueHand(): array
+    {
+        return $this->hand;
     }
 
 }

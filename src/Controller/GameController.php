@@ -146,4 +146,46 @@ class GameController extends AbstractController
 
     }
 
+    #[Route("game", name: "card_game")]
+    public function cardGameHome(): Response
+    {
+        return $this->render('card/game_home.html.twig');
+    }
+
+    #[Route("game/doc", name: "card_game_doc")]
+    public function cardGameDoc(): Response
+    {
+        return $this->render('card/card_game_doc.html.twig');
+    }
+
+    #[Route("game/play", name: "card_game_start", methods: ['GET'])]
+    public function cardGameStart(
+        Request $request,
+        SessionInterface $session
+    ): Response {
+
+        $hand = new Hand();
+        $cardHand = $hand->getHand();
+        $deck = new DeckOfCards();
+        for ($i = 1; $i <= 52; $i++) {
+            $card = new CardGraphic();
+            $cardString = $card->getAsRepresentation($i);
+            $deck->addCard($cardString);
+        }
+
+
+        $cardDeck = $deck->shuffleDeck();
+        $cardValues = $deck->getValueDeck();
+        $remainingDeck = $deck->drawCard(2);
+        $hand = $deck->getDeckOfCards();
+
+        $data = [
+            "remainingDeck" => $remainingDeck,
+            "cardValues" => $cardValues
+        ];
+
+        return $this->render('card/card_game_play.html.twig', $data);
+
+    }
+
 }

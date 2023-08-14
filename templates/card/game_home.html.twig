@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Report{% endblock %}
+
+{% block body %}
+    <div class="two-col-layout">
+    <main class="main">
+        <article class="article">
+        <h1>/Card</h1>
+
+    <h2 id="kmom1">Kortleks Logik</h2>
+    <p>I spelet 21 får spelaren två kort i början av matchen. Spelaren kan sedan bestämma vare sig denne vill dra ett kort eller behålla de kort som de har i handen, en så kallad "stand". I spelet skall summan av korten uppgå till så nära 21 som möjligt, men om summan skulle överskrida 21 så förlorar spelaren rundan och banken vinner. Esset kan ha värdet 1 eller 14 och kung,drottning samt knekten har ett värde av 13,12,11 respektive.</p>
+    <p>När spelaren väljer att inte dra sitt kort d.v.s "stand" så drar banken istället, om summan är mindre än 16 eller chansen för förlust är högre än 50% så drar banken ett kort. Banken vinner om den har mindre än 22 och samtidigt har högre summa än spelaren.</p>
+    <p>Om man väljer en ny runda, så kommer samma kortlek användas som i tidigare rundor, och det kommer bli allt mindre kort i kortleken. Om spelaren väljer börja om så startas ett nytt spel med en ny kortlek.</p>
+    <a href="{{ path('card_game_doc') }}"><h3>Dokumentation om Spelet</h3></a>
+    <a class="button" href="{{ path('card_game_start') }}">Spela 21</a>
+    </article>
+    </main>
+
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Report{% endblock %}
+
+{% block body %}
+    <div class="two-col-layout">
+    <main class="main">
+        <article class="article">
+        <h1>Kortleken</h1>
+
+    <h2 id="kmom1">Se kortleken under</h2>
+
+    <div class="card"
+
+    </div>
+    <ul>
+    {% for values in remainingDeck %}
+        <li class="cards">{{ values }}</li>
+    {% endfor %}
+    </ul>
+    <ul>
+
+        </article>
+    </main>
+
+    <aside class="aside">
+        <h2>Innehåll</h2>
+        <a href="{{ path('show_deck') }}"><h3>Show Deck</h3></a>
+        <a href="{{ path('shuffle_deck') }}"><h3>Shuffle Deck</h3></a>
+        <a href="{{ path('draw_one') }}"><h3>Draw 1 Card</h3></a>
+        <a href="{{ path('draw_several', {num: 5}) }}""><h3>Draw 5 Cards</h3></a>
+    </aside>
+</div>
+{% endblock %}
