@@ -158,14 +158,12 @@ class GameController extends AbstractController
         return $this->render('card/card_game_doc.html.twig');
     }
 
-    #[Route("game/play", name: "card_game_start", methods: ['GET'])]
-    public function cardGameStart(
+    #[Route("game/init", name: "card_game_init", methods: ['GET'])]
+    public function cardGameInit(
         Request $request,
         SessionInterface $session
     ): Response {
 
-        $hand = new Hand();
-        $cardHand = $hand->getHand();
         $deck = new DeckOfCards();
         for ($i = 1; $i <= 52; $i++) {
             $card = new CardGraphic();
@@ -173,26 +171,87 @@ class GameController extends AbstractController
             $deck->addCard($cardString);
         }
 
-
         $cardDeck = $deck->shuffleDeck();
         $cardValues = $deck->makeValueDeck();
-        $remainingDeck = $deck->drawCard(2);
+        $remainingDeck = $deck->drawCard(1);
         $cardQuantity = count($remainingDeck);
-        $hand = $deck->getHand();
 
+        $hand = new Hand();
+        $hand->addCards($deck->drawnCards());
+        $cardHand = $hand->getHand();
+        $sumHand = $hand->getSum();
+
+        $session->set("deck", $deck);
         $session->set("cardDeck", $remainingDeck);
-        $session->set("cardDeckValue", $deck->getValueCards($remainingDeck));
+        $session->set("cardHand", $cardHand);
 
+        return $this->redirectToRoute('card_game_play');
+
+    }
+    
+    #[Route("game/play", name: "card_game_play", methods: ['GET'])]
+    public function cardGameStart(
+        Request $request,
+        SessionInterface $session
+    ): Response {
+
+        $deck = $session->get("deck");
+        $cardDeck = $session->get("cardDeck");
+        $cardHand = $session->get("cardHand");
+        
+        
         $data = [
-            "remainingDeck" => $deck->getValueCards($remainingDeck),
-            "cardValues" => $remainingDeck,
-            "cardQuantity" => $cardQuantity
+            "remainingDeck" => array_keys($cardHand),
+            "cardValues" => $cardHand,
+            "sumHand" => array_sum($cardHand)
         ];
-
-        print_r($remainingDeck);
 
         return $this->render('card/card_game_play.html.twig', $data);
 
+    }
+
+    #[Route("game/draw", name: "game_draw", methods: ['POST'])]
+    public function gameDraw(
+        SessionInterface $session
+    ): Response
+    {
+
+        $deck = $session->get("deck");
+        $remainingDeck = $deck->drawCard(1);
+
+        $cardHand = $session->get("cardHand");
+        $cardHand->addCards($deck->drawnCards());
+        $cardHand = $cardHand->getHand();
+        $sumHand = $hand->getSum();
+        
+        $session->set("cardDeck", $remainingDeck);
+        $session->set("cardHand", $cardHand);
+       
+        
+        
+        return $this->redirectToRoute('card_game_play');
+    }
+
+    #[Route("game/stand", name: "game_stand", methods: ['POST'])]
+    public function gameStand(
+        SessionInterface $session
+    ): Response
+    {
+        $hand = $session->get("pig_dicehand");
+        $hand->roll();
+
+        $roundTotal = $session->get("pig_round");
+        $round = 0;
+
+        $session->set("pig_round", $roundTotal + $round);
+        
+        return $this->redirectToRoute('game_play');
+    }
+
+    #[Route("game/roll", name: "game_restart", methods: ['POST'])]
+    public function gameRestart(): Response
+    {
+        return $this->redirectToRoute('card_game');
     }
 
 }

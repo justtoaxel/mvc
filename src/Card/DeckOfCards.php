@@ -96,17 +96,19 @@ class DeckOfCards
         //returns value of array above, also removes top 2 cards
         //$arr1 = array_flip($this->deck);
         //$values = (array_replace($arr1, $this->values));
-
+        $this->hand = $this->deck;
         //print_r($this->deck);
         return $remainingDeck;
     }
 
+
+    //Gets the graphic representation in the Array
     public function getValueCards(array $cards): array
     {
         return $cardValues = array_keys($cards);
     }
 
-    public function getHand(): array
+    public function drawnCards(): array
     {
 
         return $this->hand;

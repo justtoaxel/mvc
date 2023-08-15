@@ -8,14 +8,20 @@ class Hand
 {
     private $hand = [];
 
-    public function add(String $card): void
+    public function addCards(array $cards): void
     {
-        $this->hand[] = $card;
+        $this->hand;
+        $this->hand = $cards;
     }
 
     public function getHand(): array
     {
         return $this->hand;
+    }
+
+    public function getSum(): int
+    {
+        return $sumHand = array_sum($this->hand);
     }
 
     public function valueHand(): array

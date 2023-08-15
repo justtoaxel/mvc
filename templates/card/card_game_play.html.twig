@@ -6,20 +6,36 @@
     <div class="two-col-layout">
     <main class="main">
         <article class="article">
-        <h1>Kortleken</h1>
+        <h1>Spelet 21</h1>
 
-    <h2 id="kmom1">Se kortleken under</h2>
+    <h2 id="kmom1">Din Korthand</h2>
 
     <div class="card"
 
     </div>
-    <p>{{ cardQuantity }}</p>
     <ul>
     {% for values in remainingDeck %}
         <li class="cards">{{ values }}</li>
     {% endfor %}
+
+    <p>Din korthand är värd {{ sumHand }} poäng</p>
     </ul>
-    <ul>
+    <form method="post" action="">
+    <p>
+        <input type="submit" name="draw" value="Draw"
+            onClick="this.form.action='{{ path('game_draw') }}';"
+        >
+        
+        <input type="submit" name="save" value="Save"
+            onClick="this.form.action='{{ path('game_stand') }}';"
+        >
+
+        <input type="submit" name="restart" value="Restart"
+            onClick="this.form.action='{{ path('game_restart') }}';this.form.method='get';"
+        >
+    </p>
+</form>
+
 
         </article>
     </main>
