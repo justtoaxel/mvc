@@ -175,14 +175,21 @@ class GameController extends AbstractController
 
 
         $cardDeck = $deck->shuffleDeck();
-        $cardValues = $deck->getValueDeck();
+        $cardValues = $deck->makeValueDeck();
         $remainingDeck = $deck->drawCard(2);
-        $hand = $deck->getDeckOfCards();
+        $cardQuantity = count($remainingDeck);
+        $hand = $deck->getHand();
+
+        $session->set("cardDeck", $remainingDeck);
+        $session->set("cardDeckValue", $deck->getValueCards($remainingDeck));
 
         $data = [
-            "remainingDeck" => $remainingDeck,
-            "cardValues" => $cardValues
+            "remainingDeck" => $deck->getValueCards($remainingDeck),
+            "cardValues" => $remainingDeck,
+            "cardQuantity" => $cardQuantity
         ];
+
+        print_r($remainingDeck);
 
         return $this->render('card/card_game_play.html.twig', $data);
 

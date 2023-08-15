@@ -5,6 +5,7 @@ namespace App\Card;
 class DeckOfCards
 {
     private $deck = [];
+    private $hand = [];
     private $values = [
         '🂱'=> 1,
         '🂲'=> 2,
@@ -76,18 +77,39 @@ class DeckOfCards
         return $this->deck;
     }
 
-    public function getValueDeck(): array
+    public function makeValueDeck(): array
     {
         $arr1 = array_flip($this->deck);
         $values = (array_replace($arr1, $this->values));
+        //print_r(count($remainingDeck));
+        //print_r(count($values));
+        //array_diff_key($arr1, $this->values);
+        //print_r($test);
+
         return $this->deck = $values;
     }
 
     public function drawCard(int $drawAmount): array
     {
-
+        //Remove cards from Deck, graphics
         $remainingDeck = array_splice($this->deck, $drawAmount);
+        //returns value of array above, also removes top 2 cards
+        //$arr1 = array_flip($this->deck);
+        //$values = (array_replace($arr1, $this->values));
+
+        //print_r($this->deck);
         return $remainingDeck;
+    }
+
+    public function getValueCards(array $cards): array
+    {
+        return $cardValues = array_keys($cards);
+    }
+
+    public function getHand(): array
+    {
+
+        return $this->hand;
     }
 
     public function getNumberCards(): int
