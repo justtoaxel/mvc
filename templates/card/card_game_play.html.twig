@@ -26,16 +26,24 @@
             onClick="this.form.action='{{ path('game_draw') }}';"
         >
         
-        <input type="submit" name="save" value="Save"
+        <input type="submit" name="stand" value="Stand"
             onClick="this.form.action='{{ path('game_stand') }}';"
         >
 
-        <input type="submit" name="restart" value="Restart"
-            onClick="this.form.action='{{ path('game_restart') }}';this.form.method='get';"
+        <input type="submit" name="restart" value="Play Again"
+            onClick="this.form.action='{{ path('card_game_init') }}';this.form.method='get';"
         >
     </p>
 </form>
 
+{# read and display all flash messages #}
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="flash-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
 
         </article>
     </main>

@@ -92,13 +92,14 @@ class DeckOfCards
     public function drawCard(int $drawAmount): array
     {
         //Remove cards from Deck, graphics
-        $remainingDeck = array_splice($this->deck, $drawAmount);
+        //print_r($this->deck);
+        $remainingDeck = array_splice($this->deck, 1);
         //returns value of array above, also removes top 2 cards
         //$arr1 = array_flip($this->deck);
         //$values = (array_replace($arr1, $this->values));
         $this->hand = $this->deck;
         //print_r($this->deck);
-        return $remainingDeck;
+        return $this->deck = $remainingDeck;
     }
 
 

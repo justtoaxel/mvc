@@ -176,6 +176,8 @@ class GameController extends AbstractController
         $remainingDeck = $deck->drawCard(1);
         $cardQuantity = count($remainingDeck);
 
+        
+
         $hand = new Hand();
         $hand->addCards($deck->drawnCards());
         $cardHand = $hand->getHand();
@@ -184,6 +186,7 @@ class GameController extends AbstractController
         $session->set("deck", $deck);
         $session->set("cardDeck", $remainingDeck);
         $session->set("cardHand", $cardHand);
+        $session->set("sumHand", $sumHand);
 
         return $this->redirectToRoute('card_game_play');
 
@@ -198,12 +201,24 @@ class GameController extends AbstractController
         $deck = $session->get("deck");
         $cardDeck = $session->get("cardDeck");
         $cardHand = $session->get("cardHand");
-        
+        $sumHand = $session->get("sumHand");
+
+        if ($sumHand > 21) {
+            $this->addFlash(
+                'warning',
+                'Du fick över 21 och har förlorat rundan'
+            );
+        } else {
+        $this->addFlash(
+            'notice',
+            'Vill du dra ett till kort?'
+        );
+    }
         
         $data = [
             "remainingDeck" => array_keys($cardHand),
             "cardValues" => $cardHand,
-            "sumHand" => array_sum($cardHand)
+            "sumHand" => $sumHand
         ];
 
         return $this->render('card/card_game_play.html.twig', $data);
@@ -216,16 +231,18 @@ class GameController extends AbstractController
     ): Response
     {
 
-        $deck = $session->get("deck");
+        $deck = $deck = $session->get("deck");;
         $remainingDeck = $deck->drawCard(1);
-
+        
+        $hand = new Hand();
         $cardHand = $session->get("cardHand");
-        $cardHand->addCards($deck->drawnCards());
-        $cardHand = $cardHand->getHand();
-        $sumHand = $hand->getSum();
+        $hand->setHand($cardHand);
+        $cardHand = $hand->addCards($deck->drawnCards());
+        $cardHand = $hand->getHand();
         
         $session->set("cardDeck", $remainingDeck);
         $session->set("cardHand", $cardHand);
+        $session->set("sumHand", $hand->getSum());
        
         
         

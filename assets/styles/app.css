@@ -134,3 +134,34 @@ footer {
 .button:hover {
   background-color: #00c281;
 }
+
+.flash-notice {
+  padding: 0.5em;
+  color: #ffffff81;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+.flash-notice:before {
+  content: "ⓘ";
+}
+
+.flash-warning {
+  padding: 0.5em;
+  color: #ffffff83;
+  background-color: #69001a;
+  border-color: #ffeeba;
+}
+.flash-warning:before {
+  content: "⚠";
+}
+
+.flash-success {
+  padding: 0.5em;
+  color: #ffffff83;
+  background-color: #69001a;
+  border-color: #ffeeba;
+}
+.flash-success:before {
+  content: "⚠";
+}
+
