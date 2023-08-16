@@ -158,10 +158,10 @@ footer {
 .flash-success {
   padding: 0.5em;
   color: #ffffff83;
-  background-color: #69001a;
+  background-color: #007250;
   border-color: #ffeeba;
 }
 .flash-success:before {
-  content: "⚠";
+  content: "🏆";
 }
 

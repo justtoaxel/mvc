@@ -4,35 +4,35 @@ namespace App\Card;
 
 use App\Card\Card;
 
-class Hand
+class BankHand
 {
-    private $hand = [];
+    private $bank = [];
 
-    public function setHand(array $cardHand): array
+    public function setBank(array $cardBank): array
     {
-        return $this->hand = $cardHand;
+        return $this->bank = $cardBank;
     }
 
     public function addCards(array $cards): void
     {
-        $addedCards = array_replace($this->hand, $cards);
+        $addedCards = array_replace($this->bank, $cards);
         //print_r($addedCards);
-        $this->hand = $addedCards;
+        $this->bank = $addedCards;
     }
 
-    public function getHand(): array
+    public function getBank(): array
     {
-        return $this->hand;
+        return $this->bank;
     }
 
     public function getSum(): int
     {
-        return $sumHand = array_sum($this->hand);
+        return $sumBank = array_sum($this->bank);
     }
 
-    public function valueHand(): array
+    public function valueBank(): array
     {
-        return $this->hand;
+        return $this->bank;
     }
 
 }

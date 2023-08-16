@@ -10,6 +10,7 @@ use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\DeckOfCards;
 use App\Card\Hand;
+use App\Card\BankHand;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -170,23 +171,36 @@ class GameController extends AbstractController
             $cardString = $card->getAsRepresentation($i);
             $deck->addCard($cardString);
         }
-
+        //Initilize CardDeck
         $cardDeck = $deck->shuffleDeck();
         $cardValues = $deck->makeValueDeck();
         $remainingDeck = $deck->drawCard(1);
-        $cardQuantity = count($remainingDeck);
 
-        
-
+        //Initilize PlayerHand
         $hand = new Hand();
         $hand->addCards($deck->drawnCards());
         $cardHand = $hand->getHand();
         $sumHand = $hand->getSum();
-
+        
+            //Set Session for Player
         $session->set("deck", $deck);
         $session->set("cardDeck", $remainingDeck);
         $session->set("cardHand", $cardHand);
         $session->set("sumHand", $sumHand);
+
+            //Initilize Bank
+        $deck = $session->get("deck");
+        $remainingDeck = $deck->drawCard(1);
+        
+        $bHand = new BankHand();
+        $bankHand = $bHand->addCards($deck->drawnCards());
+        $bankHand = $bHand->getBank();
+        $sumBank = $bHand->getSum();
+
+            //Set Session for Bank & Update Deck
+        $session->set("cardDeck", $remainingDeck);
+        $session->set("bankHand", $bankHand);
+        $session->set("sumBank", $sumBank);
 
         return $this->redirectToRoute('card_game_play');
 
@@ -202,6 +216,10 @@ class GameController extends AbstractController
         $cardDeck = $session->get("cardDeck");
         $cardHand = $session->get("cardHand");
         $sumHand = $session->get("sumHand");
+        $bankHand = $session->get("bankHand");
+        $sumBank = $session->get("sumBank");
+
+        print_r($bankHand);
 
         if ($sumHand > 21) {
             $this->addFlash(
@@ -231,7 +249,7 @@ class GameController extends AbstractController
     ): Response
     {
 
-        $deck = $deck = $session->get("deck");;
+        $deck = $session->get("deck");
         $remainingDeck = $deck->drawCard(1);
         
         $hand = new Hand();
@@ -244,8 +262,22 @@ class GameController extends AbstractController
         $session->set("cardHand", $cardHand);
         $session->set("sumHand", $hand->getSum());
        
+        //Initilize Bank
+        $deck = $session->get("deck");
+        $remainingDeck = $deck->drawCard(1);
         
-        
+        $bHand = new BankHand();
+        $bankHand = $session->get("bankHand");
+        $bHand->setBank($bankHand);
+        $bankHand = $bHand->addCards($deck->drawnCards());
+        $bankHand = $bHand->getBank();
+        $sumHand = $session->get("sumHand");
+
+            //Set Session for Bank & Update Deck
+        $session->set("cardDeck", $remainingDeck);
+        $session->set("bankHand", $bankHand);
+        $session->set("sumHand", $bHand->getSum());
+
         return $this->redirectToRoute('card_game_play');
     }
 
