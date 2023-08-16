@@ -165,6 +165,9 @@ class GameController extends AbstractController
         SessionInterface $session
     ): Response {
 
+        $stand = false;
+        $session->set("stand", $stand);
+
         $deck = new DeckOfCards();
         for ($i = 1; $i <= 52; $i++) {
             $card = new CardGraphic();
@@ -220,16 +223,33 @@ class GameController extends AbstractController
         $sumBank = $session->get("sumBank");
 
         print_r($bankHand);
-
+        $stand = $session->get("stand");
         if ($sumHand > 21) {
             $this->addFlash(
                 'warning',
                 'Du fick över 21 och har förlorat rundan'
             );
-        } else {
-        $this->addFlash(
-            'notice',
-            'Vill du dra ett till kort?'
+        } else if ($sumBank > 21) {
+            $this->addFlash(
+                'success',
+                'Banken fick över 21 och har förlorat rundan'
+            );
+        } else if ($stand == True) {
+            if ($sumBank >= $sumHand) {
+                $this->addFlash(
+                    'warning',
+                    'Du förlorade rundan, Banken fick mest poäng'
+                );
+             } else {
+                    $this->addFlash(
+                        'Success',
+                        'Du vann rundan, Du fick mest poäng'
+                    );
+                }
+            } else {
+            $this->addFlash(
+                'notice',
+                'Vill du dra ett till kort?'
         );
     }
         
@@ -261,8 +281,11 @@ class GameController extends AbstractController
         $session->set("cardDeck", $remainingDeck);
         $session->set("cardHand", $cardHand);
         $session->set("sumHand", $hand->getSum());
-       
-        //Initilize Bank
+
+        $sumBank = $session->get("sumBank");
+        if ($sumBank >= 17) {
+        } else {
+            //Initilize Bank
         $deck = $session->get("deck");
         $remainingDeck = $deck->drawCard(1);
         
@@ -271,12 +294,12 @@ class GameController extends AbstractController
         $bHand->setBank($bankHand);
         $bankHand = $bHand->addCards($deck->drawnCards());
         $bankHand = $bHand->getBank();
-        $sumHand = $session->get("sumHand");
 
             //Set Session for Bank & Update Deck
         $session->set("cardDeck", $remainingDeck);
         $session->set("bankHand", $bankHand);
-        $session->set("sumHand", $bHand->getSum());
+        $session->set("sumBank", $bHand->getSum());
+    } 
 
         return $this->redirectToRoute('card_game_play');
     }
@@ -286,18 +309,32 @@ class GameController extends AbstractController
         SessionInterface $session
     ): Response
     {
-        $hand = $session->get("pig_dicehand");
-        $hand->roll();
-
-        $roundTotal = $session->get("pig_round");
-        $round = 0;
-
-        $session->set("pig_round", $roundTotal + $round);
+        $sumBank = $session->get("sumBank");
+        if ($sumBank >= 17) {
+        } else {
+            //Initilize Bank
+        $deck = $session->get("deck");
+        $remainingDeck = $deck->drawCard(1);
         
-        return $this->redirectToRoute('game_play');
+        $bHand = new BankHand();
+        $bankHand = $session->get("bankHand");
+        $bHand->setBank($bankHand);
+        $bankHand = $bHand->addCards($deck->drawnCards());
+        $bankHand = $bHand->getBank();
+
+            //Set Session for Bank & Update Deck
+        $session->set("cardDeck", $remainingDeck);
+        $session->set("bankHand", $bankHand);
+        $session->set("sumBank", $bHand->getSum());
     }
 
-    #[Route("game/roll", name: "game_restart", methods: ['POST'])]
+        $stand = True;
+        $session->set("stand", $stand);
+        
+        return $this->redirectToRoute('card_game_play');
+    }
+
+    #[Route("game/restart", name: "game_restart", methods: ['POST'])]
     public function gameRestart(): Response
     {
         return $this->redirectToRoute('card_game');
