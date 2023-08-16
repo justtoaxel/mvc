@@ -12,20 +12,26 @@
     <a href="{{ asset('img/Flowchart.png') }}">
         <img src="{{ asset('img/Flowchart.png') }}" alt="">
     </a>
+    <p>I ovanför bild har jag "Sanolikhet" som en "condition" och detta stämmer inte med hur jag slutade med projektet, jag valde istället att "17 >" avgör bankens beteende</p>
     <h2 id="kmom1">Pseudokod för Sanolikhet-Funktionen</h2>
     <ul>
-    <p>
-    Formula för att räkna ut sanolikhet är [4m – n(x)]/(52m – N), för att kunna ge uträkning åt banken och spelaren måste vi definiera variabler för formeln
+    <p>If $sumHand > 21</p>
+    
+    <p>elseif $sumBank > 21</p>
 
-    $n(x) = ($handValue - 22) 
-        antalet kort som dragits med värde som gör att spelaren får 22.
+    <p>elseif $stand == true</p>
+        <p>if $sumHand >= $sumBank</p>
 
-    m = 1 deck
+            <p>else</p>
 
-    n = totala antalet kort som dragits count(hand)
-    </p>
+        <p>else</p>
     </ul>
     <h2 id="kmom1">Klasserna som används i Spelet</h2>
+    <p>Card - Skapar ett Kort</p>
+    <p>Card-Graphic - Skapar en grafisk representation av koret, Arv av Kort-Klassen</p>
+    <p>DeckOfCards - Skapar Decket av kort och hanterar kortleken, komposition av CardGraphic</p>
+    <p>Hand - Spelarens hand, komposition av CardGraphic</p>
+    <p>BankHand - Bankens hand, komposition av Cardgraphic</p>
     </article>
     </main>
 
