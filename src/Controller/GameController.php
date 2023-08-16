@@ -184,23 +184,23 @@ class GameController extends AbstractController
         $hand->addCards($deck->drawnCards());
         $cardHand = $hand->getHand();
         $sumHand = $hand->getSum();
-        
-            //Set Session for Player
+
+        //Set Session for Player
         $session->set("deck", $deck);
         $session->set("cardDeck", $remainingDeck);
         $session->set("cardHand", $cardHand);
         $session->set("sumHand", $sumHand);
 
-            //Initilize Bank
+        //Initilize Bank
         $deck = $session->get("deck");
         $remainingDeck = $deck->drawCard(1);
-        
+
         $bHand = new BankHand();
         $bankHand = $bHand->addCards($deck->drawnCards());
         $bankHand = $bHand->getBank();
         $sumBank = $bHand->getSum();
 
-            //Set Session for Bank & Update Deck
+        //Set Session for Bank & Update Deck
         $session->set("cardDeck", $remainingDeck);
         $session->set("bankHand", $bankHand);
         $session->set("sumBank", $sumBank);
@@ -208,7 +208,7 @@ class GameController extends AbstractController
         return $this->redirectToRoute('card_game_play');
 
     }
-    
+
     #[Route("game/play", name: "card_game_play", methods: ['GET'])]
     public function cardGameStart(
         Request $request,
@@ -229,30 +229,30 @@ class GameController extends AbstractController
                 'warning',
                 'Du fick över 21 och har förlorat rundan'
             );
-        } else if ($sumBank > 21) {
+        } elseif ($sumBank > 21) {
             $this->addFlash(
                 'success',
                 'Banken fick över 21 och har förlorat rundan'
             );
-        } else if ($stand == True) {
+        } elseif ($stand == true) {
             if ($sumBank >= $sumHand) {
                 $this->addFlash(
                     'warning',
                     'Du förlorade rundan, Banken fick mest poäng'
                 );
-             } else {
-                    $this->addFlash(
-                        'Success',
-                        'Du vann rundan, Du fick mest poäng'
-                    );
-                }
             } else {
+                $this->addFlash(
+                    'Success',
+                    'Du vann rundan, Du fick mest poäng'
+                );
+            }
+        } else {
             $this->addFlash(
                 'notice',
                 'Vill du dra ett till kort?'
-        );
-    }
-        
+            );
+        }
+
         $data = [
             "remainingDeck" => array_keys($cardHand),
             "cardValues" => $cardHand,
@@ -266,18 +266,17 @@ class GameController extends AbstractController
     #[Route("game/draw", name: "game_draw", methods: ['POST'])]
     public function gameDraw(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
 
         $deck = $session->get("deck");
         $remainingDeck = $deck->drawCard(1);
-        
+
         $hand = new Hand();
         $cardHand = $session->get("cardHand");
         $hand->setHand($cardHand);
         $cardHand = $hand->addCards($deck->drawnCards());
         $cardHand = $hand->getHand();
-        
+
         $session->set("cardDeck", $remainingDeck);
         $session->set("cardHand", $cardHand);
         $session->set("sumHand", $hand->getSum());
@@ -286,20 +285,20 @@ class GameController extends AbstractController
         if ($sumBank >= 17) {
         } else {
             //Initilize Bank
-        $deck = $session->get("deck");
-        $remainingDeck = $deck->drawCard(1);
-        
-        $bHand = new BankHand();
-        $bankHand = $session->get("bankHand");
-        $bHand->setBank($bankHand);
-        $bankHand = $bHand->addCards($deck->drawnCards());
-        $bankHand = $bHand->getBank();
+            $deck = $session->get("deck");
+            $remainingDeck = $deck->drawCard(1);
+
+            $bHand = new BankHand();
+            $bankHand = $session->get("bankHand");
+            $bHand->setBank($bankHand);
+            $bankHand = $bHand->addCards($deck->drawnCards());
+            $bankHand = $bHand->getBank();
 
             //Set Session for Bank & Update Deck
-        $session->set("cardDeck", $remainingDeck);
-        $session->set("bankHand", $bankHand);
-        $session->set("sumBank", $bHand->getSum());
-    } 
+            $session->set("cardDeck", $remainingDeck);
+            $session->set("bankHand", $bankHand);
+            $session->set("sumBank", $bHand->getSum());
+        }
 
         return $this->redirectToRoute('card_game_play');
     }
@@ -307,30 +306,29 @@ class GameController extends AbstractController
     #[Route("game/stand", name: "game_stand", methods: ['POST'])]
     public function gameStand(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $sumBank = $session->get("sumBank");
         if ($sumBank >= 17) {
         } else {
             //Initilize Bank
-        $deck = $session->get("deck");
-        $remainingDeck = $deck->drawCard(1);
-        
-        $bHand = new BankHand();
-        $bankHand = $session->get("bankHand");
-        $bHand->setBank($bankHand);
-        $bankHand = $bHand->addCards($deck->drawnCards());
-        $bankHand = $bHand->getBank();
+            $deck = $session->get("deck");
+            $remainingDeck = $deck->drawCard(1);
+
+            $bHand = new BankHand();
+            $bankHand = $session->get("bankHand");
+            $bHand->setBank($bankHand);
+            $bankHand = $bHand->addCards($deck->drawnCards());
+            $bankHand = $bHand->getBank();
 
             //Set Session for Bank & Update Deck
-        $session->set("cardDeck", $remainingDeck);
-        $session->set("bankHand", $bankHand);
-        $session->set("sumBank", $bHand->getSum());
-    }
+            $session->set("cardDeck", $remainingDeck);
+            $session->set("bankHand", $bankHand);
+            $session->set("sumBank", $bHand->getSum());
+        }
 
-        $stand = True;
+        $stand = true;
         $session->set("stand", $stand);
-        
+
         return $this->redirectToRoute('card_game_play');
     }
 
