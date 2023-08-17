@@ -212,7 +212,7 @@ class LuckyControllerJson extends AbstractController
         Request $request,
         SessionInterface $session
     ): Response {
-        
+
         $deck = $session->get("deck");
         $cardDeck = $session->get("cardDeck");
         $cardHand = $session->get("cardHand");

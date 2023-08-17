@@ -87,7 +87,7 @@
         "phpmd": "tools/phpmd/vendor/bin/phpmd . text phpmd.xml || true",
         "phpstan": "tools/phpstan/vendor/bin/phpstan || true",
         "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit",
-        "phpdoc": "tools/phpdoc/phpdoc",
+        "phpdoc": "tools/phpdoc/phpDocumentor.phar",
         "lint": [
             "@csfix",
             "@phpmd",
