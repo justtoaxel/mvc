@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/home/alliud/dbwebb-kurser/mvc/me/report/phpunit.xml.dist" tests="13" assertions="27" errors="0" failures="1" skipped="0" time="0.038189">
+    <testsuite name="Project Test Suite" tests="13" assertions="27" errors="0" failures="1" skipped="0" time="0.038189">
+      <testsuite name="App\Card\BankTest" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/BankTest.php" tests="3" assertions="6" errors="0" failures="0" skipped="0" time="0.022526">
+        <testcase name="test_bank_gets_cards" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/BankTest.php" line="16" class="App\Card\BankTest" classname="App.Card.BankTest" assertions="2" time="0.020351"/>
+        <testcase name="test_bank_add_cards" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/BankTest.php" line="32" class="App\Card\BankTest" classname="App.Card.BankTest" assertions="2" time="0.001163"/>
+        <testcase name="test_bank_sum_cards" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/BankTest.php" line="61" class="App\Card\BankTest" classname="App.Card.BankTest" assertions="2" time="0.001012"/>
+      </testsuite>
+      <testsuite name="App\Card\CardGraphicTest" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.001308">
+        <testcase name="test_card" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/CardGraphicTest.php" line="16" class="App\Card\CardGraphicTest" classname="App.Card.CardGraphicTest" assertions="2" time="0.001308"/>
+      </testsuite>
+      <testsuite name="App\Card\CardTest" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" tests="1" assertions="2" errors="0" failures="1" skipped="0" time="0.003718">
+        <testcase name="test_card" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php" line="16" class="App\Card\CardTest" classname="App.Card.CardTest" assertions="2" time="0.003718">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">App\Card\CardTest::test_card
+App\Card\Card Object (...) does not match expected type "NULL".
+
+/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/CardTest.php:22</failure>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Card\DeckOfCardsTest" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" tests="5" assertions="11" errors="0" failures="0" skipped="0" time="0.007428">
+        <testcase name="test_that_cards_are_added" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="16" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" assertions="3" time="0.001854"/>
+        <testcase name="test_that_creates_value" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="34" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" assertions="2" time="0.001334"/>
+        <testcase name="test_that_it_draws_card" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="53" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" assertions="2" time="0.001525"/>
+        <testcase name="test_that_it_gets_drawn" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="73" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" assertions="2" time="0.001349"/>
+        <testcase name="test_that_can_get_number" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/DeckOfCardsTest.php" line="93" class="App\Card\DeckOfCardsTest" classname="App.Card.DeckOfCardsTest" assertions="2" time="0.001367"/>
+      </testsuite>
+      <testsuite name="App\Card\HandTest" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/HandTest.php" tests="3" assertions="6" errors="0" failures="0" skipped="0" time="0.003208">
+        <testcase name="test_hand_gets_cards" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/HandTest.php" line="16" class="App\Card\HandTest" classname="App.Card.HandTest" assertions="2" time="0.001175"/>
+        <testcase name="test_hand_add_cards" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/HandTest.php" line="32" class="App\Card\HandTest" classname="App.Card.HandTest" assertions="2" time="0.000994"/>
+        <testcase name="test_hand_sum_cards" file="/home/alliud/dbwebb-kurser/mvc/me/report/tests/Card/HandTest.php" line="61" class="App\Card\HandTest" classname="App.Card.HandTest" assertions="2" time="0.001040"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

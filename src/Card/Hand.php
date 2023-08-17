@@ -30,9 +30,4 @@ class Hand
         return $sumHand = array_sum($this->hand);
     }
 
-    public function valueHand(): array
-    {
-        return $this->hand;
-    }
-
 }

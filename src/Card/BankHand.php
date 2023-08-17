@@ -30,9 +30,4 @@ class BankHand
         return $sumBank = array_sum($this->bank);
     }
 
-    public function valueBank(): array
-    {
-        return $this->bank;
-    }
-
 }
