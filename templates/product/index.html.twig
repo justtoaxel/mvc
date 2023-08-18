@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Library{% endblock %}
+
+{% block body %}
+    <div class="two-col-layout">
+    <main class="main">
+        <article class="article">
+        <h1>/Library</h1>
+
+    <h2 id="kmom1">Välkommen till Biblioteket</h2>
+    <p>Vad vill du göra?</p>
+    <a class="button" href="{{ path('book_create') }}">Lägg till ny bok</a>
+    <a class="button" href="{{ path('book_show_all') }}">Visa/Redigera Böcker</a>
+    </article>
+    </main>
+
+</div>
+{% endblock %}

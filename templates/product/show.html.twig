@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Showing Library{% endblock %}
+
+{% block body %}
+    <div class="two-col-layout">
+    <main class="main">
+        <article class="article">
+        <h1>/Show Library</h1>
+
+    <h2 id="kmom1">Här kan du se alla böcker</h2>
+    
+    <table style="width: 100%;">
+    <thead style="background-color: #04AA6D; padding: 8px;">
+    <tr>
+        <th>Namn</th>
+        <th>Författare</th>
+        <th>ISBN</th>
+        <th>Uppdatera</th>
+        <th>Radera</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for book in bookArray %}
+    <tr>
+    <td style="border: 1px solid #ddd;">{{book.name}}</td>
+    <td style="border: 1px solid #ddd;">{{book.author}}</td>
+    <td style="border: 1px solid #ddd;">{{book.isbn}}</td>
+    <form method="post" action="">
+    <td style="border: 1px solid #ddd;"><input type="submit" name="roll" value="✎"
+            onClick="this.form.action='{{ path('p') }}';"
+        ></td>
+    <td style="border: 1px solid #ddd;"><a href="delete/{{book.id}}">🗑</a></td>
+    </form>
+    </tr>
+    {% endfor %}
+    </table>
+    
+    </article>
+    </main>
+
+</div>
+{% endblock %}
