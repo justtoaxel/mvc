@@ -10,6 +10,8 @@ use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\DeckOfCards;
 use App\Card\Hand;
+use App\Card\BankHand;
+use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -19,8 +21,6 @@ class LuckyControllerJson extends AbstractController
     public function jsonNumber(): Response
     {
         $number = random_int(0, 100);
-
-        $myArray = ["“Learn as if you will live forever, live like you will die tomorrow.”", "“Experience is a hard teacher because she gives the test first, the lesson afterwards.”", "“To know how much there is to know is the beginning of learning to live.”"];
 
         $data = [
             'lucky-number' => $number,
@@ -38,9 +38,7 @@ class LuckyControllerJson extends AbstractController
     public function jsonQuote(): Response
     {
 
-        $number = random_int(0, 100);
-
-        $today = $date = date('Y-m-d H:i:s');
+        $today = date('Y-m-d H:i:s');
 
         $quotesArray = array(
             0 => 'Learn as if you will live forever, live like you will die tomorrow.',
@@ -72,7 +70,6 @@ class LuckyControllerJson extends AbstractController
 
     #[Route("/api/deck", name: "api_deck")]
     public function jsonDeck(
-        Request $request,
         SessionInterface $session
     ): Response {
 
@@ -103,7 +100,6 @@ class LuckyControllerJson extends AbstractController
 
     #[Route("/api/deck/shuffle", name: "api_shuffle", methods: ['POST'])]
     public function jsonShuffle(
-        Request $request,
         SessionInterface $session
     ): Response {
 
@@ -143,12 +139,11 @@ class LuckyControllerJson extends AbstractController
 
     #[Route("/api/deck/draw", name: "api_drawOne", methods: ['POST'])]
     public function jsonDrawOne(
-        Request $request,
         SessionInterface $session
     ): Response {
 
         $hand = new Hand();
-        $cardHand = $hand->getHand();
+        $hand->getHand();
 
         $shuffledDeck = $session->get("cardDeck");
 
@@ -175,15 +170,15 @@ class LuckyControllerJson extends AbstractController
     #[Route("/api/deck/draw/{num<\d+>}", name: "api_drawSeveral", methods: ['POST'])]
     public function jsonDrawSeveral(
         int $num,
-        Request $request,
         SessionInterface $session
     ): Response {
+
         if ($num > 52) {
-            throw new \Exception("Can not draw more than 52 cards!");
+            throw new Exception("Can not draw more than 52 cards!");
         }
 
         $hand = new Hand();
-        $cardHand = $hand->getHand();
+        $hand->getHand();
 
         $shuffledDeck = $session->get("cardDeck");
 
@@ -209,11 +204,10 @@ class LuckyControllerJson extends AbstractController
 
     #[Route("/api/game", name: "api_game", methods: ['GET'])]
     public function jsonGame(
-        Request $request,
         SessionInterface $session
     ): Response {
 
-        $deck = $session->get("deck");
+        $session->get("deck");
         $cardDeck = $session->get("cardDeck");
         $cardHand = $session->get("cardHand");
         $sumHand = $session->get("sumHand");
@@ -221,11 +215,11 @@ class LuckyControllerJson extends AbstractController
         $sumBank = $session->get("sumBank");
 
         $data = [
-         "Kortlek" => $cardDeck,
-         "Korthand Spelare" => $cardHand,
-         "Value Spelare" => $sumHand,
-            "Korthand Bank" => $bankHand,
-          "Value Bank" => $sumBank
+        "Kortlek" => $cardDeck,
+        "Korthand Spelare" => $cardHand,
+        "Value Spelare" => $sumHand,
+        "Korthand Bank" => $bankHand,
+        "Value Bank" => $sumBank
         ];
 
         $response = new JsonResponse($data);

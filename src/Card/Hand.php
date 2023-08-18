@@ -23,11 +23,11 @@ class Hand
     /**
     * Denna klass lägger till en ny Kort-array tillsammans med den tidigare och på så sätt ökar antalet kort i handen, den sparar sedan ner denna till hand-arrayen.
     */
-    public function addCards(array $cards): void
+    public function addCards(array $cards): array
     {
         $addedCards = array_replace($this->hand, $cards);
         //print_r($addedCards);
-        $this->hand = $addedCards;
+        return $this->hand = $addedCards;
     }
     /**
     * Denna metod används helt enkelt för att få ut handleken som en array, och på så sätt kunna till exempel spara den i Sessionen via routen
@@ -41,7 +41,7 @@ class Hand
     */
     public function getSum(): int
     {
-        return $sumHand = array_sum($this->hand);
+        return array_sum($this->hand);
     }
 
 }

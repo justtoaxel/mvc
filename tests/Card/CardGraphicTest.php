@@ -13,7 +13,7 @@ class CardGraphicTest extends TestCase
      * Construct object.
      */
 
-     public function test_card()
+     public function testCardRepresentation()
      {
         $card = new CardGraphic();
         $this->assertInstanceOf("\App\Card\CardGraphic", $card);

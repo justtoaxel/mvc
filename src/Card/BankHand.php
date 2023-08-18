@@ -13,11 +13,11 @@ class BankHand
         return $this->bank = $cardBank;
     }
 
-    public function addCards(array $cards): void
+    public function addCards(array $cards): array
     {
         $addedCards = array_replace($this->bank, $cards);
         //print_r($addedCards);
-        $this->bank = $addedCards;
+        return $this->bank = $addedCards;
     }
 
     public function getBank(): array
@@ -27,7 +27,7 @@ class BankHand
 
     public function getSum(): int
     {
-        return $sumBank = array_sum($this->bank);
+        return array_sum($this->bank);
     }
 
 }

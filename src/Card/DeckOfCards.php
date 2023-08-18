@@ -93,7 +93,7 @@ class DeckOfCards
     {
         //Remove cards from Deck, graphics
         //print_r($this->deck);
-        $remainingDeck = array_splice($this->deck, 1);
+        $remainingDeck = array_splice($this->deck, $drawAmount);
         //returns value of array above, also removes top 2 cards
         //$arr1 = array_flip($this->deck);
         //$values = (array_replace($arr1, $this->values));
@@ -106,7 +106,7 @@ class DeckOfCards
     //Gets the graphic representation in the Array
     public function getValueCards(array $cards): array
     {
-        return $cardValues = array_keys($cards);
+        return array_keys($cards);
     }
 
     public function drawnCards(): array

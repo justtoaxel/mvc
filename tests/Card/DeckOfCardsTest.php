@@ -13,7 +13,7 @@ class DeckOfCardsTest extends TestCase
      * Construct object.
      */
 
-     public function test_that_cards_are_added()
+     public function testThatCardsAreAdded()
      {
          
          $deck = new DeckOfCards();
@@ -31,7 +31,7 @@ class DeckOfCardsTest extends TestCase
          $this->assertContains('🂴', $deckOfCards);
      }
 
-    public function test_that_creates_value()
+    public function testThatCreatesValue()
     {
 
         $deck = new DeckOfCards();
@@ -50,7 +50,7 @@ class DeckOfCardsTest extends TestCase
         $this->assertArrayHasKey('🂱', $deckOfCards);
     }
 
-    public function test_that_it_draws_card()
+    public function testThatItDrawsCard()
     {
 
         $deck = new DeckOfCards();
@@ -70,7 +70,7 @@ class DeckOfCardsTest extends TestCase
         $this->assertCount(51, $deckOfCards);
     }
 
-    public function test_that_it_gets_drawn()
+    public function testThatItGetsDrawn()
     {
 
         $deck = new DeckOfCards();
@@ -90,7 +90,7 @@ class DeckOfCardsTest extends TestCase
         $this->assertCount(1, $deckOfCards);
     }
 
-    public function test_that_can_get_number()
+    public function testThatCanGetNumber()
     {
 
         $deck = new DeckOfCards();

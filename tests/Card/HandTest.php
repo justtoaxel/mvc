@@ -13,7 +13,7 @@ class HandTest extends TestCase
      * Construct object.
      */
 
-     public function test_hand_gets_cards()
+     public function testHandGetsCards()
      {
         $values = [
             '🂱'=> 1,
@@ -29,7 +29,7 @@ class HandTest extends TestCase
          $this->assertArrayHasKey('🂲', $handCards);
      }
 
-     public function test_hand_add_cards()
+     public function testHandAddCards()
      {
         $arr1 = [
             '🂱'=> 1,
@@ -58,7 +58,7 @@ class HandTest extends TestCase
          $this->assertEquals($exp, $handCards);
      }
 
-     public function test_hand_sum_cards()
+     public function testHandSumCards()
      {
         $values = [
             '🂱'=> 1,

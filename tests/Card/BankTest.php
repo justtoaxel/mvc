@@ -13,7 +13,7 @@ class BankTest extends TestCase
      * Construct object.
      */
 
-     public function test_bank_gets_cards()
+     public function testBankGetsCards()
      {
         $values = [
             '🂱'=> 1,
@@ -29,7 +29,7 @@ class BankTest extends TestCase
          $this->assertArrayHasKey('🂲', $bankCards);
      }
 
-     public function test_bank_add_cards()
+     public function testBankAddCards()
      {
         $arr1 = [
             '🂱'=> 1,
@@ -58,7 +58,7 @@ class BankTest extends TestCase
          $this->assertEquals($exp, $bankCards);
      }
 
-     public function test_bank_sum_cards()
+     public function testBankSumCards()
      {
         $values = [
             '🂱'=> 1,
