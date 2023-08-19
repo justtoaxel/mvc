@@ -13,7 +13,7 @@
     <table style="width: 100%;">
     <thead style="background-color: #04AA6D; padding: 8px;">
     <tr>
-        <th>Namn</th>
+        <th style="padding: 16px;">Namn</th>
         <th>Författare</th>
         <th>ISBN</th>
         <th>Uppdatera</th>
@@ -23,14 +23,14 @@
     <tbody>
     {% for book in bookArray %}
     <tr>
-    <td style="border: 1px solid #ddd;">{{book.name}}</td>
-    <td style="border: 1px solid #ddd;">{{book.author}}</td>
-    <td style="border: 1px solid #ddd;">{{book.isbn}}</td>
+    <td style="border: 1px solid #ddd; padding: 32px; text-decoration: underline;"><a href="{{ path('book_by_id', {'id': book.id})}}">{{book.name}}</a></td>
+    <td style="border: 1px solid #ddd; padding: 32px;">{{book.author}}</td>
+    <td style="border: 1px solid #ddd; padding: 32px;">{{book.isbn}}</td>
+    <td style="border: 1px solid #ddd; padding: 32px; font-size: 24px;"><a href="update/{{book.id}}">✎</a></td>
     <form method="post" action="">
-    <td style="border: 1px solid #ddd;"><input type="submit" name="roll" value="✎"
-            onClick="this.form.action='{{ path('p') }}';"
-        ></td>
-    <td style="border: 1px solid #ddd;"><a href="delete/{{book.id}}">🗑</a></td>
+    <td style="border: 1px solid #ddd; padding: 32px; font-size: 24px;"><button type="submit" name="id" value="{{book.id}}"
+            onClick="this.form.action={{ path('book_delete_by_id', {'id': book.id})}}"
+        >🗑</button></td>
     </form>
     </tr>
     {% endfor %}

@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Book;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\BookRepository;
+use Symfony\Component\HttpFoundation\Request;
 
 class ProductController extends AbstractController
 {
@@ -19,7 +20,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/library/create', name: 'book_create')]
+    /*#[Route('/library/create', name: 'book_create')]
     public function createProduct(
         ManagerRegistry $doctrine
     ): Response {
@@ -40,6 +41,43 @@ class ProductController extends AbstractController
 
         return new Response('Saved new product with id '.$product->getId());
 }
+*/
+    #[Route('/library/create', name: 'book_create')]
+    public function createProduct(
+        ManagerRegistry $doctrine
+    ): Response {
+
+        return $this->render('product/create.html.twig');
+    }
+
+    #[Route('/library/create/test', name: 'book_create_test', methods: ['POST'])]
+    public function createProductConfirm(
+        ManagerRegistry $doctrine,
+        Request $request
+    ): Response {
+
+        $name = $request->request->get('name');
+        $author = $request->request->get('author');
+        $isbn = $request->request->get('isbn');
+        $img = $request->request->get('img');
+        
+        $entityManager = $doctrine->getManager();
+
+        $product = new Book();
+        $product->setName($name);
+        $product->setAuthor($author);
+        $product->setISBN($isbn);
+        $product->setImg($img);
+
+        // tell Doctrine you want to (eventually) save the Product
+        // (no queries yet)
+        $entityManager->persist($product);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return $this->redirectToRoute('book_show_all');
+    }
 
     #[Route('/library/show', name: 'book_show_all')]
     public function showAllBook(
@@ -55,27 +93,35 @@ class ProductController extends AbstractController
         return $this->render('product/show.html.twig', $data);
 }
 
-    #[Route('/library/show/{id}', name: 'book_by_id')]
+    #[Route('/library/show/{id}', name: 'book_by_id', methods: ['GET'])]
     public function showBookById(
         BookRepository $bookRepository,
         int $id
     ): Response {
-        $book = $bookRepository
-            ->find($id);
-
-            $response = $this->json($book);
-            $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-            );
-            return $response;
+        $book = $bookRepository->find($id);
+        
+            $name = $book->getName();
+            $author = $book->getAuthor();
+            $ISBN = $book->getIsbn();
+            $img = $book->getImg();
+            $data = [
+                "name" => $name,
+                "author" => $author,
+                "ISBN" => $ISBN,
+                "img" => $img
+            ];
+        
+            return $this->render('product/show_one.html.twig', $data);
     }
 
-    #[Route('/library/delete/{id}', name: 'book_delete_by_id')]
+    #[Route('/library/delete', name: 'book_delete_by_id', methods:['POST'])]
     public function deleteBookById(
-        BookRepository $bookRepository,
-        int $id
+        BookManagerRegistry $doctrine,
+        Request $request
     ): Response {
-        $book = $bookRepository->find($id);
+        $id = $request->request->get('id');
+        $entityManager = $doctrine->getManager();
+        $book = $entityManager->getRepository(Book::class)->find($id);
 
         if (!$book) {
             throw $this->createNotFoundException(
@@ -83,32 +129,70 @@ class ProductController extends AbstractController
             );
         }
 
-        $bookRepository->remove($book, true);
+        $entityManager->remove($book);
+        $entityManager->flush();
 
-        return $this->redirectToRoute('product_show_all');
+        return $this->render('product/show.html.twig', $data);
+        //return $this->redirectToRoute('book_show_all');
     }
 
-    #[Route('/library/update/{id}/{value}', name: 'product_update')]
-    public function updateProduct(
-        ProductRepository $productRepository,
-        int $id,
-        int $value
+    #[Route('/library/update/{id}', name: 'product_update')]
+    public function updateForm(
+        BookRepository $bookRepository,
+        int $id
     ): Response {
-        $product = $productRepository->find($id);
+        $book = $bookRepository
+            ->find($id);
+        
+            $id = $book->getId();
+            $name = $book->getName();
+            $author = $book->getAuthor();
+            $ISBN = $book->getIsbn();
+            $img = $book->getImg();
+            $data = [
+                "id" => $id,
+                "name" => $name,
+                "author" => $author,
+                "ISBN" => $ISBN,
+                "img" => $img
+            ];
+        
+            return $this->render('product/update.html.twig', $data);
+    }
 
-        if (!$product) {
+
+    #[Route('/library/update', name: 'book_update_confirm')]
+    public function updateProduct(
+        ManagerRegistry $doctrine,
+        Request $request
+    ): Response {
+        
+        $id = $request->request->get('id');
+        $entityManager = $doctrine->getManager();
+        $book = $entityManager->getRepository(Book::class)->find($id);
+
+        $name = $request->request->get('name');
+        $author = $request->request->get('author');
+        $ISBN = $request->request->get('isbn');
+        $img = $request->request->get('img');
+
+        if (!$book) {
             throw $this->createNotFoundException(
-                'No product found for id '.$id
+                'No book found for id '.$id
             );
         }
 
-        $product->setValue($value);
-        $productRepository->save($product, true);
+        $book->setName($name);
+        $book->setAuthor($author);
+        $book->setIsbn($ISBN);
+        $book->setImg($img);
+        
+        $entityManager->flush();
 
-        return $this->redirectToRoute('product_show_all');
+        return $this->redirectToRoute('book_show_all');
     }
 
-    #[Route('api/library/show', name: 'book_show_all_api')]
+    #[Route('api/library/books', name: 'book_show_all_api')]
     public function showAllBookApi(
         BookRepository $bookRepository
     ): Response {
@@ -121,4 +205,19 @@ class ProductController extends AbstractController
         );
         return $response;
 }
+
+#[Route('api/library/book/{isbn}', name: 'book_by_id_api')]
+    public function showBookByIdApi(
+        BookRepository $bookRepository,
+        Request $request
+    ): Response {
+        $book = $bookRepository
+            ->find($isbn);
+
+            $response = $this->json($book);
+            $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            );
+            return $response;
+    }
 }

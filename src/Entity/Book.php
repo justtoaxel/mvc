@@ -19,8 +19,8 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $author = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $isbn = null;
+    #[ORM\Column]
+    private ?int $isbn = null;
 
     #[ORM\Column(length: 255)]
     private ?string $img = null;

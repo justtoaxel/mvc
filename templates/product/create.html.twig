@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Creating Book{% endblock %}
+
+{% block body %}
+    <div class="two-col-layout">
+    <main class="main">
+        <article class="article">
+        <h1>/Create Book</h1>
+    
+    <h2 id="kmom1">Fyll i information nedan</h2>
+    
+    <form method="post" action="{{ path('book_create_test') }}">
+<fielset>
+    <p>
+        <label> Titel:
+            <input type="text" name="name">
+        </label>
+    </p>
+    <p>
+        <label> Författare:
+            <input type="text" name="author">
+        </label>
+    </p>
+    <p>
+        <label> ISBN:
+            <input type="number" name="isbn">
+        </label>
+    </p>
+    <p>
+        <label> Bild:
+            <input type="text" name="img">
+        </label>
+    </p>
+    <p>
+        <input type="submit" name="doIt" value="Lägg till Bok">
+    </p>
+</fieldset>
+</form>
+    
+    </article>
+    </main>
+
+</div>
+{% endblock %}
