@@ -44,7 +44,6 @@ class ProductController extends AbstractController
 */
     #[Route('/library/create', name: 'book_create')]
     public function createProduct(
-        ManagerRegistry $doctrine
     ): Response {
 
         return $this->render('product/create.html.twig');
@@ -60,7 +59,7 @@ class ProductController extends AbstractController
         $author = $request->request->get('author');
         $isbn = $request->request->get('isbn');
         $img = $request->request->get('img');
-        
+
         $entityManager = $doctrine->getManager();
 
         $product = new Book();
@@ -89,9 +88,9 @@ class ProductController extends AbstractController
         $data = [
             "bookArray" => $books
         ];
-    
+
         return $this->render('product/show.html.twig', $data);
-}
+    }
 
     #[Route('/library/show/{id}', name: 'book_by_id', methods: ['GET'])]
     public function showBookById(
@@ -99,19 +98,19 @@ class ProductController extends AbstractController
         int $id
     ): Response {
         $book = $bookRepository->find($id);
-        
-            $name = $book->getName();
-            $author = $book->getAuthor();
-            $ISBN = $book->getIsbn();
-            $img = $book->getImg();
-            $data = [
-                "name" => $name,
-                "author" => $author,
-                "ISBN" => $ISBN,
-                "img" => $img
-            ];
-        
-            return $this->render('product/show_one.html.twig', $data);
+
+        $name = $book->getName();
+        $author = $book->getAuthor();
+        $isbn = $book->getIsbn();
+        $img = $book->getImg();
+        $data = [
+            "name" => $name,
+            "author" => $author,
+            "ISBN" => $isbn,
+            "img" => $img
+        ];
+
+        return $this->render('product/show_one.html.twig', $data);
     }
 
     #[Route('/library/delete', name: 'book_delete_by_id', methods:['POST'])]
@@ -144,37 +143,37 @@ class ProductController extends AbstractController
     ): Response {
         $book = $bookRepository
             ->find($id);
-        
-            $id = $book->getId();
-            $name = $book->getName();
-            $author = $book->getAuthor();
-            $ISBN = $book->getIsbn();
-            $img = $book->getImg();
-            $data = [
-                "id" => $id,
-                "name" => $name,
-                "author" => $author,
-                "ISBN" => $ISBN,
-                "img" => $img
-            ];
-        
-            return $this->render('product/update.html.twig', $data);
+
+        $id = $book->getId();
+        $name = $book->getName();
+        $author = $book->getAuthor();
+        $isbn = $book->getIsbn();
+        $img = $book->getImg();
+        $data = [
+            "id" => $id,
+            "name" => $name,
+            "author" => $author,
+            "ISBN" => $isbn,
+            "img" => $img
+        ];
+
+        return $this->render('product/update.html.twig', $data);
     }
 
 
-    #[Route('/library/update', name: 'book_update_confirm')]
+    #[Route('/library/update', name: 'book_update_confirm', methods:['POST'])]
     public function updateProduct(
         ManagerRegistry $doctrine,
         Request $request
     ): Response {
-        
+
         $id = $request->request->get('id');
         $entityManager = $doctrine->getManager();
         $book = $entityManager->getRepository(Book::class)->find($id);
 
         $name = $request->request->get('name');
         $author = $request->request->get('author');
-        $ISBN = $request->request->get('isbn');
+        $isbn = $request->request->get('isbn');
         $img = $request->request->get('img');
 
         if (!$book) {
@@ -185,9 +184,9 @@ class ProductController extends AbstractController
 
         $book->setName($name);
         $book->setAuthor($author);
-        $book->setIsbn($ISBN);
+        $book->setIsbn($isbn);
         $book->setImg($img);
-        
+
         $entityManager->flush();
 
         return $this->redirectToRoute('book_show_all');
@@ -202,23 +201,22 @@ class ProductController extends AbstractController
 
         $response = $this->json($books);
         $response->setEncodingOptions(
-        $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
-}
+    }
 
 #[Route('api/library/book/{isbn<\d+>}', name: 'book_by_id_api')]
     public function showBookByIdApi(
         BookRepository $bookRepository,
-        Request $request,
         int $isbn
     ): Response {
         $book = $bookRepository->findOneBySomeField($isbn);
 
-            $response = $this->json($book);
-            $response->setEncodingOptions(
+        $response = $this->json($book);
+        $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
-            );
-            return $response;
+        );
+        return $response;
     }
 }

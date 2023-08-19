@@ -54,12 +54,12 @@ class Book
         return $this;
     }
 
-    public function getIsbn(): ?string
+    public function getIsbn(): ?int
     {
         return $this->isbn;
     }
 
-    public function setIsbn(string $isbn): static
+    public function setIsbn(int $isbn): static
     {
         $this->isbn = $isbn;
 

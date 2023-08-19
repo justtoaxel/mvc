@@ -47,11 +47,11 @@ class BookRepository extends ServiceEntityRepository
 
     public function findOneBySomeField($value): ?Book
     {
-       return $this->createQueryBuilder('b')
-            ->andWhere('b.isbn = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+        return $this->createQueryBuilder('b')
+             ->andWhere('b.isbn = :val')
+             ->setParameter('val', $value)
+             ->getQuery()
+             ->getOneOrNullResult()
         ;
     }
 }
