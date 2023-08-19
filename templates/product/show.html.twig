@@ -27,10 +27,9 @@
     <td style="border: 1px solid #ddd; padding: 32px;">{{book.author}}</td>
     <td style="border: 1px solid #ddd; padding: 32px;">{{book.isbn}}</td>
     <td style="border: 1px solid #ddd; padding: 32px; font-size: 24px;"><a href="update/{{book.id}}">✎</a></td>
-    <form method="post" action="">
+    <form method="post" action="{{ path('book_delete_by_id') }}">
     <td style="border: 1px solid #ddd; padding: 32px; font-size: 24px;"><button type="submit" name="id" value="{{book.id}}"
-            onClick="this.form.action={{ path('book_delete_by_id', {'id': book.id})}}"
-        >🗑</button></td>
+            onClick="this.form.action={{ path('book_delete_by_id', {'id': book.id})}}">🗑</button></td>
     </form>
     </tr>
     {% endfor %}

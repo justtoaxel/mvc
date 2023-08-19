@@ -21,6 +21,15 @@ class BookRepository extends ServiceEntityRepository
         parent::__construct($registry, Book::class);
     }
 
+    /*public function findIsbn()
+    {
+        $qb = $this->createQueryBuilder( alias: 'p');
+
+        $qb
+            ->
+        return ;
+    }
+*/
 //    /**
 //     * @return Book[] Returns an array of Book objects
 //     */
@@ -36,13 +45,13 @@ class BookRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Book
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findOneBySomeField($value): ?Book
+    {
+       return $this->createQueryBuilder('b')
+            ->andWhere('b.isbn = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

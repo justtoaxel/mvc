@@ -116,13 +116,14 @@ class ProductController extends AbstractController
 
     #[Route('/library/delete', name: 'book_delete_by_id', methods:['POST'])]
     public function deleteBookById(
-        BookManagerRegistry $doctrine,
+        ManagerRegistry $doctrine,
         Request $request
     ): Response {
         $id = $request->request->get('id');
         $entityManager = $doctrine->getManager();
         $book = $entityManager->getRepository(Book::class)->find($id);
 
+        print_r($id);
         if (!$book) {
             throw $this->createNotFoundException(
                 'No product found for id '.$id
@@ -132,8 +133,8 @@ class ProductController extends AbstractController
         $entityManager->remove($book);
         $entityManager->flush();
 
-        return $this->render('product/show.html.twig', $data);
-        //return $this->redirectToRoute('book_show_all');
+        //return $this->render('product/show.html.twig');
+        return $this->redirectToRoute('book_show_all');
     }
 
     #[Route('/library/update/{id}', name: 'product_update')]
@@ -206,13 +207,13 @@ class ProductController extends AbstractController
         return $response;
 }
 
-#[Route('api/library/book/{isbn}', name: 'book_by_id_api')]
+#[Route('api/library/book/{isbn<\d+>}', name: 'book_by_id_api')]
     public function showBookByIdApi(
         BookRepository $bookRepository,
-        Request $request
+        Request $request,
+        int $isbn
     ): Response {
-        $book = $bookRepository
-            ->find($isbn);
+        $book = $bookRepository->findOneBySomeField($isbn);
 
             $response = $this->json($book);
             $response->setEncodingOptions(

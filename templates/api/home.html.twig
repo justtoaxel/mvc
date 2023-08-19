@@ -24,12 +24,11 @@
             onClick="this.form.action='{{ path('api_drawSeveral', {num: 5}) }}';"
         >
     </p>
+    </form>
     <a href="{{ path('api_game') }}"><h3>Visa status för Spelet-21</h3></a>
     <a href="{{ path('book_show_all_api') }}"><h3>Visa alla böcker</h3></a>
-    <a href="{{ path('book_by_id_api', {9781234567897}) }}"><h3>Visa Bok med ISBN</h3></a>
+    <a href="{{ path('book_by_id_api', {isbn:9799586842036}) }}"><h3>Visa Bok med ISBN</h3></a>
         </ul>
-
-</form>
         </article>
     </main>
 
