@@ -20,28 +20,6 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /*#[Route('/library/create', name: 'book_create')]
-    public function createProduct(
-        ManagerRegistry $doctrine
-    ): Response {
-        $entityManager = $doctrine->getManager();
-
-        $product = new Book();
-        $product->setName('Sagan om Ringen: 1');
-        $product->setAuthor('J.R.R Tolkien');
-        $product->setISBN('9781234567897');
-        $product->setImg('lotr1.jpg');
-
-        // tell Doctrine you want to (eventually) save the Product
-        // (no queries yet)
-        $entityManager->persist($product);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-
-        return new Response('Saved new product with id '.$product->getId());
-}
-*/
     #[Route('/library/create', name: 'book_create')]
     public function createProduct(
     ): Response {
@@ -190,33 +168,5 @@ class ProductController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('book_show_all');
-    }
-
-    #[Route('api/library/books', name: 'book_show_all_api')]
-    public function showAllBookApi(
-        BookRepository $bookRepository
-    ): Response {
-        $books = $bookRepository
-            ->findAll();
-
-        $response = $this->json($books);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-    }
-
-#[Route('api/library/book/{isbn<\d+>}', name: 'book_by_id_api')]
-    public function showBookByIdApi(
-        BookRepository $bookRepository,
-        int $isbn
-    ): Response {
-        $book = $bookRepository->findOneBySomeField($isbn);
-
-        $response = $this->json($book);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
     }
 }

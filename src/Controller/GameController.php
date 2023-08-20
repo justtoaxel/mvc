@@ -65,7 +65,7 @@ class GameController extends AbstractController
 
         $bHand = new BankHand();
         $bankHand = $bHand->addCards($deck->drawnCards());
-        $bankHand = $bHand->getBank();
+        
         $sumBank = $bHand->getSum();
 
         //Set Session for Bank & Update Deck
@@ -142,7 +142,6 @@ class GameController extends AbstractController
         $cardHand = $session->get("cardHand");
         $hand->setHand($cardHand);
         $cardHand = $hand->addCards($deck->drawnCards());
-        $cardHand = $hand->getHand();
 
         $session->set("cardDeck", $remainingDeck);
         $session->set("cardHand", $cardHand);
@@ -159,7 +158,6 @@ class GameController extends AbstractController
             $bankHand = $session->get("bankHand");
             $bHand->setBank($bankHand);
             $bankHand = $bHand->addCards($deck->drawnCards());
-            $bankHand = $bHand->getBank();
 
             //Set Session for Bank & Update Deck
             $session->set("cardDeck", $remainingDeck);
@@ -185,7 +183,6 @@ class GameController extends AbstractController
             $bankHand = $session->get("bankHand");
             $bHand->setBank($bankHand);
             $bankHand = $bHand->addCards($deck->drawnCards());
-            $bankHand = $bHand->getBank();
 
             //Set Session for Bank & Update Deck
             $session->set("cardDeck", $remainingDeck);

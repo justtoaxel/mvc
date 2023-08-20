@@ -52,6 +52,11 @@
     <p>Översikts mässigt var en stor del av min problematik i rapporterna jsut på kontrollerna, vilket kommer leda till att jag anser att de flesta förbättringarna behöver ske i dess kod.</p>
     <p> <b>PHPMetrics</b> - I PHPMetric fick jag 3 Class Violations för GameController, LuckyControllerJson och ProductController och kommer förändra dessa för att få dem att passera dom testerna.</p>
     <p> <b>Scrutinizer</b> - Scrutinizer påvisade att jag hade 13 oanvända variabler, många återigen som var i kontroller metoder, min tanke är att jag ska gå igenom dessa och försöka ta bort åtminstone 3 av dessa där jag ser att dessa då inte används.</p>
+    <a href="{{ asset('img/PHPMetrics3.jpg') }}">
+        <img width=1250 height=300 src="{{ asset('img/PHPMetrics3.jpg') }}" alt="">
+    </a>
+    <p> Detta är resultat efter förbättringen av kontrollerna där jag gjorde en ny API-kontroller för Spelet-21 och Biblioteket. Jag reducerade även lite kod som inte användes. Vilket ledde till en lite lägre komplexitet.
+
     <h2 id="diskussion">Diskussion</h2>
     <p>Utifrån denna studie tycker jag det känns uppenbart att man kan aktivt använda dessa verktyg för att jobba med kodkvalitet och ha en mer saniterad kod (clean code). Scrutinizer ger även en väldigt god överblick vilket ger en bra metod för beta ner på antalet problem som uppstår. Förutom att man får bättre kod lär man sig också mycket mer, och jag tycker personligen att man lär sig att den "personliga" kodstil man har skapar lite "oegentligheter" och löser saker på ett mer komplicerat sätt än vad det behöver vara. Detta kan nog kanske samtidigt vara ett dubbeläggat svärd tror jag i form av att det kan nog säkert även hämma lite mer kreativa eller "oortodoxa" lösningar. Jag tror att i detta fall kan det vara en god idé att man kan uppnå clean code på annat sätt, genom att till exempel kommunicera med andra programmerare och få feedback av dessa. Verktyg som dessa tillsammans och ens programmerings-"kollegor" kan leda till att riktigt bra kod skrivs som är väll strukturerad men även mångsidig i praktiken</p>
 </ul>

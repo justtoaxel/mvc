@@ -186,6 +186,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-CardController.html#method_drawSeveral"
         },                {
+            "fqsen": "\\App\\Controller\\CardController\u003A\u003AmetricsRouteCustom\u0028\u0029",
+            "name": "metricsRouteCustom",
+            "summary": "",
+            "url": "classes/App-Controller-CardController.html#method_metricsRouteCustom"
+        },                {
             "fqsen": "\\App\\Controller\\GameController",
             "name": "GameController",
             "summary": "",
@@ -225,6 +230,26 @@ Search.appendIndex(
             "name": "gameRestart",
             "summary": "",
             "url": "classes/App-Controller-GameController.html#method_gameRestart"
+        },                {
+            "fqsen": "\\App\\Controller\\GameLibAPIController",
+            "name": "GameLibAPIController",
+            "summary": "",
+            "url": "classes/App-Controller-GameLibAPIController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\GameLibAPIController\u003A\u003AjsonGame\u0028\u0029",
+            "name": "jsonGame",
+            "summary": "",
+            "url": "classes/App-Controller-GameLibAPIController.html#method_jsonGame"
+        },                {
+            "fqsen": "\\App\\Controller\\GameLibAPIController\u003A\u003AshowAllBookApi\u0028\u0029",
+            "name": "showAllBookApi",
+            "summary": "",
+            "url": "classes/App-Controller-GameLibAPIController.html#method_showAllBookApi"
+        },                {
+            "fqsen": "\\App\\Controller\\GameLibAPIController\u003A\u003AshowBookByIdApi\u0028\u0029",
+            "name": "showBookByIdApi",
+            "summary": "",
+            "url": "classes/App-Controller-GameLibAPIController.html#method_showBookByIdApi"
         },                {
             "fqsen": "\\App\\Controller\\LuckyController",
             "name": "LuckyController",
@@ -280,11 +305,6 @@ Search.appendIndex(
             "name": "jsonDrawSeveral",
             "summary": "",
             "url": "classes/App-Controller-LuckyControllerJson.html#method_jsonDrawSeveral"
-        },                {
-            "fqsen": "\\App\\Controller\\LuckyControllerJson\u003A\u003AjsonGame\u0028\u0029",
-            "name": "jsonGame",
-            "summary": "",
-            "url": "classes/App-Controller-LuckyControllerJson.html#method_jsonGame"
         },                {
             "fqsen": "\\App\\Controller\\LuckyControllerTwig",
             "name": "LuckyControllerTwig",
@@ -355,16 +375,6 @@ Search.appendIndex(
             "name": "updateProduct",
             "summary": "",
             "url": "classes/App-Controller-ProductController.html#method_updateProduct"
-        },                {
-            "fqsen": "\\App\\Controller\\ProductController\u003A\u003AshowAllBookApi\u0028\u0029",
-            "name": "showAllBookApi",
-            "summary": "",
-            "url": "classes/App-Controller-ProductController.html#method_showAllBookApi"
-        },                {
-            "fqsen": "\\App\\Controller\\ProductController\u003A\u003AshowBookByIdApi\u0028\u0029",
-            "name": "showBookByIdApi",
-            "summary": "",
-            "url": "classes/App-Controller-ProductController.html#method_showBookByIdApi"
         },                {
             "fqsen": "\\App\\Entity\\Book",
             "name": "Book",
