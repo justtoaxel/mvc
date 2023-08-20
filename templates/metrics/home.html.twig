@@ -10,10 +10,50 @@
 <ul>
   <li>
     <h2 id="intro">Introduktion</h2>
-    <p> De 6 C:na är ett samlingt av olika mått som uppmäter kvalitén av koden i ett projekt. Code Coverage, som är den första delen mäter "kodtäckning". Detta begrepp innefattar kod som testas via så kallade test-klasser, och bedömer alltså hur väl en sekvens, metod eller klass är testad av programmerarn. En låg code coverage innebär att färre test har gjorts mot koden medans högre innebär motsatsen. </p>
- 
+    <p> <b>Code Coverage</b> - Är dett mått mäter "kodtäckning" i ett projekt. Detta begrepp innefattar kod som testas via så kallade test-klasser, och bedömer alltså hur väl en sekvens, metod eller klass är testad av programmerarn. En låg code coverage innebär att färre test har gjorts mot koden medans högre innebär motsatsen. I det projektet som jag gjort fick jag bara en total code coverage på 12%, men det är även för att jag inte testade kontroller och klasserna i "library" uppgiften.</p>
+    <p> <b>Codestyle</b> - Kodstil är ett form av praxis som anses bör användas för att skriva kod. Denna praxis kan variera per språk men det innebär egentligen inte att koden inte är funktionell om man inte följer praxis. Syftet med att följa en kodstil är att koden ska vara enklare att tyda både av sig själv men såväl som andra programmerare. Kostil innefattar, radlängd, indenteringar, kommentarer och vare sig man har "onödig kod", till exempel variabler som inte används.</p>
+    <p> <b>Complexity</b> - Komplexitet är ett mått för att mäta komplexitet inom specifika situationer där kod behöver göra val. Valen utgörs av kodsatser som till exempel "if()","while()", "for()" m.m. Kod som har ett värde där komplexiteten är hög anses vara mer svår testad och kan vara därför svår att tyda och felsöka och vill därför undvikas. I praktiken minimerar man komplexitet genom att göra att koden är små och att de minimeras att göra väldigt specifika saker istället för att göra flertal saker. Min klass som hade mest komplexitet var GameController, och det är itne jätte konstigt med tanke på att jag har logiken för spelet i denna kontroller.</p>
+    <p> <b>Cohesion</b> - Sammanhörighet mäter hur mycket metoderna i en klass är sammankopplade. Den mäts i form av LCOM (Lack of Cohesion of Methods), vilket kan vara lite förvirrande. Ett lågt värde i detta fall innebär att det är en låg "avsaknad av samband" mellan mellan metoderna i klassen, medans ett högt värde innebär motsatsen. Under optimala omständigheter vill man ha ett lågt värde då det innebär att koden är mer "inkapslade" och fungerar självstänigt från varandra, vilket leder till enklare underhållen kod. I min kod hade mitt JSON-Api kontroller, "LuckyControllerJson" högst LCOM värde på 8.</p>
+    <p> <b>Coupling</b> - Coupling mäts i två olika metoder "Afferent Coupling" och "Efferent Coupling". Afferent Coupling mäter hur många klasser som påverkas av en specifickt analyserad klass och Efferent Coupling mäter hur många andra klasser som den analyserade klassen påverkas av. Detta innebär alltså att till exempel kontroller klasserna har en hög EF då den påverkas av av många olika andra klasser, medans till exempel Card-Grahic har en hög Afferent coupling då den påverkar andra klasser. I mitt fall låg Card Graphic på en afferent coupling av 3, och LuckyControllerJson (API-kontrollern) på en EF av 8.</p>
+    <p> <b>CRAP</b> - CRAP står för "Change Risk Analyzer and Predictor och den mäter komplexitet i kombination med kodtäckning. Desto högre komplexitet som finns desto högre andel av koden är det som behövs testas. Tanken kring CRAP är att du vill ha lägre värden av den och helst vill man hamna någonstans under 30. Eftersom stora delar av min kod inte är testade så har jag ett högt CRAP värde överlag på de metoderna som inte har test. </p>
   </li>
 
+<li>
+    <h2 id="phpmetrics">PHPMetrics</h2>
+    <p> <b>Analys</b> - Översiktliga Resultat</p>
+  </li>
+<a href="{{ asset('img/PHPMetrics.jpg') }}">
+        <img width=1250 height=300 src="{{ asset('img/PHPMetrics.jpg') }}" alt="">
+    </a>
+    <li>
+    <p> Jag har totalt sett 752 linjer av kod vilket jag tycker verkar vara en rimligt summa. Däremot när man kollar mer in på den så är det tydligt att vissa klasser skulle kunna minimera mängden som den har allokerad i sig. Bästa exemplet är "GameController", eftersom den har en stor del av logiken för spelet</p>
+    <p> Jag har totalt sett 7 violations vilket är en av de grejerna jag troligtvis kommer fokusera på vad gäller förbättring jag verkar ha två "errors" och ser dessa som två av de saker jag troligtvis kommer försöka lösa först. Sedan har jag ett antal andra violations, och jag tror dessa i allmänhet här jag kommer lägga de 3 förbättringarna jag kommer göra.</p>
+    <a href="{{ asset('img/PHPMetrics2.jpg') }}">
+        <img width=1250 height=500 src="{{ asset('img/PHPMetrics2.jpg') }}" alt="">
+    </a>
+    <p>Vad gäller komplexitet i koden så ligger den på 4 eller under 4 per klass, förutom vad gäller en klass vilket är game controller som ligger på 8. Detta har återigen och göra med att huvudsaken av IF-sats logiken ligger i routen. I detta fall skulle det kunna vara rimligt att i någon framtid lägga den som sin separata metod och till och med kanske klass.</p>
+    <p>De delar jag tänker fokusera på är att försöka se över LuckyControllerJson-kontrollern, produkt-kontrollern för att minska antalet metoder som används. Jag lär nog gör så att jag skapar en ny controller för biblioteks API:et.</p>
+    <h2 id="scrutinizer">Scrutinizer</h2>
+    <p><a href="https://scrutinizer-ci.com/g/justtoaxel/mvc/?branch=main">
+        <img src="https://scrutinizer-ci.com/g/justtoaxel/mvc/badges/quality-score.png?b=main" alt="">
+        </a>
+        <a href="https://scrutinizer-ci.com/g/justtoaxel/mvc/?branch=main">
+        <img src="https://scrutinizer-ci.com/g/justtoaxel/mvc/badges/coverage.png?b=main" alt="">
+        </a>
+        <a href="https://scrutinizer-ci.com/g/justtoaxel/mvc/?branch=main">
+        <img src="https://scrutinizer-ci.com/g/justtoaxel/mvc/badges/build.png?b=main" alt="">
+        </a></p>
+    <a href="{{ asset('img/Scrutinizer.jpg') }}">
+        <img width=900 height=500 src="{{ asset('img/Scrutinizer.jpg') }}" alt="">
+    </a>
+    <br>
+    <p>Om man kollar på Scrutinizer så kan man se att den har fått värdet 10, vilket är ett ganska bra värde. Samtliga klasser ser ut att ha en A rating. Trots detta så har jag 17 issues vilket är ganska mycket, 13 av dessa berör unused code, 3 buggar och 3 berör best practice. Coverage verkar ligga över 70% av de som testats, men att den överliggande coverage är låg på 8%. Metoderna ser även ut att ligga på Rating av A men däremot ser det ut som att återigen min GameController har ett CRAP värde på 30, vilket innebär att den inte är riktigt testad och optimerad. Jag verkar dock inte fått någon rapport av Cohesion eller coupling i Scrutinizer och kan därför inte riktigt göra en analys av dom.</p>
+    <h2 id="improve">Förbättringar</h2>
+    <p>Översikts mässigt var en stor del av min problematik i rapporterna jsut på kontrollerna, vilket kommer leda till att jag anser att de flesta förbättringarna behöver ske i dess kod.</p>
+    <p> <b>PHPMetrics</b> - I PHPMetric fick jag 3 Class Violations för GameController, LuckyControllerJson och ProductController och kommer förändra dessa för att få dem att passera dom testerna.</p>
+    <p> <b>Scrutinizer</b> - Scrutinizer påvisade att jag hade 13 oanvända variabler, många återigen som var i kontroller metoder, min tanke är att jag ska gå igenom dessa och försöka ta bort åtminstone 3 av dessa där jag ser att dessa då inte används.</p>
+    <h2 id="diskussion">Diskussion</h2>
+    <p>Utifrån denna studie tycker jag det känns uppenbart att man kan aktivt använda dessa verktyg för att jobba med kodkvalitet och ha en mer saniterad kod (clean code). Scrutinizer ger även en väldigt god överblick vilket ger en bra metod för beta ner på antalet problem som uppstår. Förutom att man får bättre kod lär man sig också mycket mer, och jag tycker personligen att man lär sig att den "personliga" kodstil man har skapar lite "oegentligheter" och löser saker på ett mer komplicerat sätt än vad det behöver vara. Detta kan nog kanske samtidigt vara ett dubbeläggat svärd tror jag i form av att det kan nog säkert även hämma lite mer kreativa eller "oortodoxa" lösningar. Jag tror att i detta fall kan det vara en god idé att man kan uppnå clean code på annat sätt, genom att till exempel kommunicera med andra programmerare och få feedback av dessa. Verktyg som dessa tillsammans och ens programmerings-"kollegor" kan leda till att riktigt bra kod skrivs som är väll strukturerad men även mångsidig i praktiken</p>
 </ul>
         </article>
     </main>
@@ -21,11 +61,10 @@
     <aside class="aside">
         <h2>Innehållsförteckning</h2>
         <a href="#intro"><h3>Introduktion</h3></a>
-        <a href="#kmom2"><h3>Kursmoment 2</h3></a>
-        <a href="#kmom3"><h3>Kursmoment 3</h3></a>
-        <a href="#kmom4"><h3>Kursmoment 4</h3></a>
-        <a href="#kmom5"><h3>Kursmoment 5</h3></a>
-        <a href="#kmom6"><h3>Kursmoment 6</h3></a>
+        <a href="#phpmetrics"><h3>PHPMetrics</h3></a>
+        <a href="#scrutinizer"><h3>Scrutinizer</h3></a>
+        <a href="#improve"><h3>Förbättringar</h3></a>
+        <a href="#diskussion"><h3>Diskussion</h3></a>
     </aside>
 </div>
 {% endblock %}
