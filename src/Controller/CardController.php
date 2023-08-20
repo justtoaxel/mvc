@@ -145,4 +145,12 @@ class CardController extends AbstractController
 
     }
 
+    #[Route("metrics", name: "metrics")]
+    public function metricsRouteCustom(
+    ): Response {
+
+         return $this->render('metrics/home.html.twig');
+
+    }
+
 }
