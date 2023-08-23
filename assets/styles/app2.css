@@ -1,20 +1,34 @@
 body {
     margin: 0 auto;
     font-family: "Lato", sans-serif;
+    background-color: #2D283E;
+    background-image: url(https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt56ec452f2eec4e04/61f21cfb621a6a2afac2083b/repeating_leather_blue.jpg?format=webply&quality=70);
 }
 
 main {
-    margin: 0 auto;
-    max-width: 90%;
+    margin: 5%;
+}
+
+.backgroundImage {
+  margin: 0 auto;
+  background-color: #2D283E;
+  background-image: url(https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt56ec452f2eec4e04/61f21cfb621a6a2afac2083b/repeating_leather_blue.jpg?format=webply&quality=70);
 }
 
 h1 {
-    border-bottom: 4px double #ccc;
+    color: #88c9fb;
+    text-shadow: 0px 1px 1px #4d4d4d;
+    font-size: 36px;
+}
+
+p {
+  text-decoration: none;
+  color: #D1D7E0;
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: #f2f2f2;
 }
 
 ul {
@@ -28,9 +42,8 @@ li {
 
 nav {
     overflow: hidden;
-    background-color: #ffffff;
     position: fixed;
-    top: 0;
+    bottom: 0;
     width: 100%;
   }
   
@@ -80,8 +93,6 @@ footer {
     display: table;
     clear: both;
   }
-
-
   
 .two-col-layout {
   display: flex;
@@ -115,8 +126,7 @@ footer {
 }
 
 .button {
-  background-color: #00d48e; /* Knappfärg */
-  border: none;
+  background-color: #88c9fb2a; /* Knappfärg */
   color: white;
   padding: 18px;
   padding-left: 70px;
@@ -127,12 +137,12 @@ footer {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 64px;
+  border: 2px Solid #88c9fb;
   font-weight:bolder;
 }
 
 .button:hover {
-  background-color: #00c281;
+  background-color: #88c9fb5e; /* Knappfärg */
 }
 
 .flash-notice {
@@ -163,5 +173,24 @@ footer {
 }
 .flash-success:before {
   content: "🏆";
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto;
+  gap: 1px;
+  padding: 10px;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 20px 20px;
+  font-size: 30px;
+  color: white;
+}
+
+.chartContainer {
+  width: 600px;
+  height: 600px;
 }
 

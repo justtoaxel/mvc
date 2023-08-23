@@ -10,7 +10,13 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
-
+    console_command.csv_import:
+        #Kan behöva ändras till Project\CsvImportCommand, när man vill köra import kommandot i terminalen
+        class: App\Project\CsvImportCommand
+        arguments:
+        - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: console.command}
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:

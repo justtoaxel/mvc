@@ -14,7 +14,7 @@ class ProductController extends AbstractController
 {
     #[Route('/library', name: 'book_library')]
     public function index(): Response
-    {
+    {        
         return $this->render('product/index.html.twig', [
             'controller_name' => 'ProductController',
         ]);
@@ -69,6 +69,7 @@ class ProductController extends AbstractController
 
         return $this->render('product/show.html.twig', $data);
     }
+    
 
     #[Route('/library/show/{id}', name: 'book_by_id', methods: ['GET'])]
     public function showBookById(

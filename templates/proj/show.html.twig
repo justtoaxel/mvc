@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Showing Library{% endblock %}
+
+{% block body %}
+    <div class="two-col-layout">
+    <main class="main">
+        <article class="article">
+        <h1>/Show Library</h1>
+
+    <h2 id="kmom1">Här kan du se alla böcker</h2>
+    
+    <div class="chartContainer">
+        {{ render_chart(chart, {'class': 'my-chart'}) }}
+        </div>
+    </table>
+    
+    </article>
+    </main>
+
+</div>
+{% endblock %}
