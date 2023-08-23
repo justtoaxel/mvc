@@ -101,14 +101,13 @@ composer require --working-dir=tools/phpmetrics phpmetrics/phpmetrics
 
 ```
 
+```
+#PHPUnit
 composer require phpunit/phpunit --dev
 
 ```
 
-### phpunit
-
 ```
-
 # Run composer
 composer install
 
