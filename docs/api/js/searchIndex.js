@@ -761,11 +761,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Repository-RenewableRepository.html#method___construct"
         },                {
-            "fqsen": "\\App\\Repository\\RenewableRepository\u003A\u003AfindOneBySomeField\u0028\u0029",
-            "name": "findOneBySomeField",
-            "summary": "",
-            "url": "classes/App-Repository-RenewableRepository.html#method_findOneBySomeField"
-        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",

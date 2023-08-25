@@ -55,10 +55,9 @@ class ChartAPIController extends AbstractController
         $renewables = $renewableRepository
         ->findAll();
 
-
         $vattenkraft = array_column($renewables, 'vattenkraft');
-        //print_r($vattenkraft);
-        
+        // print_r($vattenkraft);
+
         $response = $this->json($vattenkraft);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
