@@ -15,20 +15,34 @@ main {
   background-image: url(https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt56ec452f2eec4e04/61f21cfb621a6a2afac2083b/repeating_leather_blue.jpg?format=webply&quality=70);
 }
 
-h1 {
+h1, h2 {
     color: #88c9fb;
     text-shadow: 0px 1px 1px #4d4d4d;
     font-size: 36px;
+    margin: 10px;
+  }
+
+h3 {
+  color: #88c9fb;
+  text-shadow: 0px 1px 1px #4d4d4d;
+  font-size: 18px;
+  margin: 10px;
 }
 
 p {
   text-decoration: none;
   color: #D1D7E0;
+  line-height: 24px;
 }
 
 a {
     text-decoration: none;
     color: #f2f2f2;
+}
+
+.ref {
+  font-size: 12px;
+  text-decoration: underline;
 }
 
 ul {
@@ -191,6 +205,9 @@ footer {
 
 .chartContainer {
   width: 600px;
-  height: 600px;
 }
 
+.container {
+  align-items: center;
+  justify-content: center;
+}

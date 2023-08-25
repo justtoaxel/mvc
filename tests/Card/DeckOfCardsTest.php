@@ -109,4 +109,34 @@ class DeckOfCardsTest extends TestCase
 
         $this->assertEquals(51, $deckOfCards);
     }
+
+    public function testGetValueCards()
+    {
+        $cards = [
+             1 => '🂱',
+            '🂲' => 2
+        ];
+
+        $deck = new DeckOfCards();
+        $this->assertInstanceOf("\App\Card\DeckOfCards", $deck);
+
+        $deckOfCards = $deck->getValueCards($cards);
+
+        $this->assertArrayHasKey(1, $deckOfCards);
+    }
+
+    public function testShuffle()
+    {
+        $cards = [
+            1 => '🂱',
+            2 => '🂲'
+        ];
+
+        $deck = new DeckOfCards();
+        $this->assertInstanceOf("\App\Card\DeckOfCards", $deck);
+
+        $deckOfCards = $deck->shuffleDeck();
+
+        $this->assertNotEquals($cards, $deckOfCards);
+    }
 }

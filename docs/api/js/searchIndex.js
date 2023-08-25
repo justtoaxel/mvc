@@ -143,7 +143,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Hand\u003A\u003AgetHand\u0028\u0029",
             "name": "getHand",
-            "summary": "Denna\u0020metod\u0020anv\u00E4nds\u0020helt\u0020enkelt\u0020f\u00F6r\u0020att\u0020f\u00E5\u0020ut\u0020handleken\u0020som\u0020en\u0020array,\u0020och\u0020p\u00E5\u0020s\u00E5\u0020s\u00E4tt\u0020kunna\u0020till\u0020exempel\u0020spara\u0020den\u0020i\u0020Sessionen\u0020via\u0020routen",
+            "summary": "Denna\u0020metod\u0020anv\u00E4nds\u0020helt\u0020enkelt\u0020f\u00F6r\u0020att\u0020f\u00E5\u0020ut\u0020handleken\u0020som\u0020en\u0020array,\u0020och\u0020p\u00E5\u0020s\u00E5\u0020s\u00E4tt\u0020kunna\u0020till\u0020exempel\u0020spara\u0020den\u0020i\u0020Sessionen\u0020via\u0020routen.",
             "url": "classes/App-Card-Hand.html#method_getHand"
         },                {
             "fqsen": "\\App\\Card\\Hand\u003A\u003AgetSum\u0028\u0029",
@@ -190,6 +190,51 @@ Search.appendIndex(
             "name": "metricsRouteCustom",
             "summary": "",
             "url": "classes/App-Controller-CardController.html#method_metricsRouteCustom"
+        },                {
+            "fqsen": "\\App\\Controller\\ChartAPIController",
+            "name": "ChartAPIController",
+            "summary": "",
+            "url": "classes/App-Controller-ChartAPIController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ChartAPIController\u003A\u003AprojAPI\u0028\u0029",
+            "name": "projAPI",
+            "summary": "",
+            "url": "classes/App-Controller-ChartAPIController.html#method_projAPI"
+        },                {
+            "fqsen": "\\App\\Controller\\ChartAPIController\u003A\u003AshowTransports\u0028\u0029",
+            "name": "showTransports",
+            "summary": "",
+            "url": "classes/App-Controller-ChartAPIController.html#method_showTransports"
+        },                {
+            "fqsen": "\\App\\Controller\\ChartAPIController\u003A\u003AshowRenewables\u0028\u0029",
+            "name": "showRenewables",
+            "summary": "",
+            "url": "classes/App-Controller-ChartAPIController.html#method_showRenewables"
+        },                {
+            "fqsen": "\\App\\Controller\\ChartAPIController\u003A\u003AshowVattenkraft\u0028\u0029",
+            "name": "showVattenkraft",
+            "summary": "",
+            "url": "classes/App-Controller-ChartAPIController.html#method_showVattenkraft"
+        },                {
+            "fqsen": "\\App\\Controller\\ChartController",
+            "name": "ChartController",
+            "summary": "",
+            "url": "classes/App-Controller-ChartController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ChartController\u003A\u003AshowAllProj\u0028\u0029",
+            "name": "showAllProj",
+            "summary": "",
+            "url": "classes/App-Controller-ChartController.html#method_showAllProj"
+        },                {
+            "fqsen": "\\App\\Controller\\ChartController\u003A\u003AprojAbout\u0028\u0029",
+            "name": "projAbout",
+            "summary": "",
+            "url": "classes/App-Controller-ChartController.html#method_projAbout"
+        },                {
+            "fqsen": "\\App\\Controller\\ChartController\u003A\u003AprojDatabase\u0028\u0029",
+            "name": "projDatabase",
+            "summary": "",
+            "url": "classes/App-Controller-ChartController.html#method_projDatabase"
         },                {
             "fqsen": "\\App\\Controller\\GameController",
             "name": "GameController",
@@ -451,10 +496,235 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Entity-Book.html#property_img"
         },                {
+            "fqsen": "\\App\\Entity\\Persontransport",
+            "name": "Persontransport",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003AgetVagtrafik\u0028\u0029",
+            "name": "getVagtrafik",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#method_getVagtrafik"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003AsetVagtrafik\u0028\u0029",
+            "name": "setVagtrafik",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#method_setVagtrafik"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003AgetBantrafik\u0028\u0029",
+            "name": "getBantrafik",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#method_getBantrafik"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003AsetBantrafik\u0028\u0029",
+            "name": "setBantrafik",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#method_setBantrafik"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003AgetSjofart\u0028\u0029",
+            "name": "getSjofart",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#method_getSjofart"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003AsetSjofart\u0028\u0029",
+            "name": "setSjofart",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#method_setSjofart"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003AgetLuftfart\u0028\u0029",
+            "name": "getLuftfart",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#method_getLuftfart"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003AsetLuftfart\u0028\u0029",
+            "name": "setLuftfart",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#method_setLuftfart"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003A\u0024vagtrafik",
+            "name": "vagtrafik",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#property_vagtrafik"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003A\u0024bantrafik",
+            "name": "bantrafik",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#property_bantrafik"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003A\u0024sjofart",
+            "name": "sjofart",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#property_sjofart"
+        },                {
+            "fqsen": "\\App\\Entity\\Persontransport\u003A\u003A\u0024luftfart",
+            "name": "luftfart",
+            "summary": "",
+            "url": "classes/App-Entity-Persontransport.html#property_luftfart"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable",
+            "name": "Renewable",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AsetId\u0028\u0029",
+            "name": "setId",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_setId"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AgetBiobransle\u0028\u0029",
+            "name": "getBiobransle",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_getBiobransle"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AsetBiobransle\u0028\u0029",
+            "name": "setBiobransle",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_setBiobransle"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AgetVattenkraft\u0028\u0029",
+            "name": "getVattenkraft",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_getVattenkraft"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AsetVattenkraft\u0028\u0029",
+            "name": "setVattenkraft",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_setVattenkraft"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AgetVindkraft\u0028\u0029",
+            "name": "getVindkraft",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_getVindkraft"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AsetVindkraft\u0028\u0029",
+            "name": "setVindkraft",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_setVindkraft"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AgetVarmepumpar\u0028\u0029",
+            "name": "getVarmepumpar",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_getVarmepumpar"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AsetVarmepumpar\u0028\u0029",
+            "name": "setVarmepumpar",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_setVarmepumpar"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AgetSolenergi\u0028\u0029",
+            "name": "getSolenergi",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_getSolenergi"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AsetSolenergi\u0028\u0029",
+            "name": "setSolenergi",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_setSolenergi"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AgetTotalgron\u0028\u0029",
+            "name": "getTotalgron",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_getTotalgron"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AsetTotalgron\u0028\u0029",
+            "name": "setTotalgron",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_setTotalgron"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AgetTotalenergi\u0028\u0029",
+            "name": "getTotalenergi",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_getTotalenergi"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003AsetTotalenergi\u0028\u0029",
+            "name": "setTotalenergi",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#method_setTotalenergi"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003A\u0024biobransle",
+            "name": "biobransle",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#property_biobransle"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003A\u0024vattenkraft",
+            "name": "vattenkraft",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#property_vattenkraft"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003A\u0024vindkraft",
+            "name": "vindkraft",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#property_vindkraft"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003A\u0024varmepumpar",
+            "name": "varmepumpar",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#property_varmepumpar"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003A\u0024solenergi",
+            "name": "solenergi",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#property_solenergi"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003A\u0024totalgron",
+            "name": "totalgron",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#property_totalgron"
+        },                {
+            "fqsen": "\\App\\Entity\\Renewable\u003A\u003A\u0024totalenergi",
+            "name": "totalenergi",
+            "summary": "",
+            "url": "classes/App-Entity-Renewable.html#property_totalenergi"
+        },                {
             "fqsen": "\\App\\Kernel",
             "name": "Kernel",
             "summary": "",
             "url": "classes/App-Kernel.html"
+        },                {
+            "fqsen": "\\App\\Project\\CsvImportCommand",
+            "name": "CsvImportCommand",
+            "summary": "Class\u0020CsvImportCommand.",
+            "url": "classes/App-Project-CsvImportCommand.html"
+        },                {
+            "fqsen": "\\App\\Project\\CsvImportCommand\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "CsvImportCommand\u0020constructor.",
+            "url": "classes/App-Project-CsvImportCommand.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Project\\CsvImportCommand\u003A\u003Aconfigure\u0028\u0029",
+            "name": "configure",
+            "summary": "Configure.",
+            "url": "classes/App-Project-CsvImportCommand.html#method_configure"
+        },                {
+            "fqsen": "\\App\\Project\\CsvImportCommand\u003A\u003Aexecute\u0028\u0029",
+            "name": "execute",
+            "summary": "",
+            "url": "classes/App-Project-CsvImportCommand.html#method_execute"
+        },                {
+            "fqsen": "\\App\\Project\\CsvImportCommand\u003A\u003A\u0024em",
+            "name": "em",
+            "summary": "",
+            "url": "classes/App-Project-CsvImportCommand.html#property_em"
         },                {
             "fqsen": "\\App\\Repository\\BookRepository",
             "name": "BookRepository",
@@ -470,6 +740,31 @@ Search.appendIndex(
             "name": "findOneBySomeField",
             "summary": "",
             "url": "classes/App-Repository-BookRepository.html#method_findOneBySomeField"
+        },                {
+            "fqsen": "\\App\\Repository\\PersontransportRepository",
+            "name": "PersontransportRepository",
+            "summary": "",
+            "url": "classes/App-Repository-PersontransportRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\PersontransportRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-PersontransportRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\RenewableRepository",
+            "name": "RenewableRepository",
+            "summary": "",
+            "url": "classes/App-Repository-RenewableRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\RenewableRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-RenewableRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\RenewableRepository\u003A\u003AfindOneBySomeField\u0028\u0029",
+            "name": "findOneBySomeField",
+            "summary": "",
+            "url": "classes/App-Repository-RenewableRepository.html#method_findOneBySomeField"
         },                {
             "fqsen": "\\",
             "name": "\\",
@@ -495,6 +790,11 @@ Search.appendIndex(
             "name": "App",
             "summary": "",
             "url": "namespaces/app.html"
+        },                {
+            "fqsen": "\\App\\Project",
+            "name": "Project",
+            "summary": "",
+            "url": "namespaces/app-project.html"
         },                {
             "fqsen": "\\App\\Repository",
             "name": "Repository",

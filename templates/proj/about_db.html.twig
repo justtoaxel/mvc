@@ -1,0 +1,31 @@
+{% extends "projbase.html.twig" %}
+
+{% block title %}Adventure{% endblock %}
+
+{% block body %}
+    <h1 style="text-align:center;">Om Databasen</h1>
+    <a href="{{ asset('img/dbTabell.jpg') }}">
+    <img src="{{ asset('img/dbTabell.jpg') }}" alt="">
+        <h3> 
+        2.
+        </h3>
+        <p>
+        Tabellen "persontransport" sparar integer värden från en CSV fil med data över antalet personkilometer per år per transporttyp.
+        </p>
+        <p>
+        Tabellen "renewable" sparar integer värden från en CSV fil med data över mängden Twh som producerats av olika energikällor per år, samt den totala energikonsumtionen av respektive källa per år.
+        </p>
+        <p>
+        Databas typen som användes för detta projekt var SQLITE, det gjordes inga enhetstester mot databasen.
+        </p>
+        <p>
+        Min åsikt kring detta skiljer sig inte från den upplevelse jag hade i kursmoment 05. Jag tycker att ORM känns ganska enkelt att använda, men återigen i detta projekt skapade jag inget mer komplicerat än kursmoment 05, så det är svårt att jämföra. I Databas kursen använde vi oss av mycket mer komplicerade funktioner för att få fram olika resultat. Återigen föredrar jag arbetssättet i databaskursen då det känns som att man har mer kontroll vad gäller vad man exakt vill ha ut. I Doctrine ORM kan det vara lite svårt att förstå exakt vad som händer bakom "kulisserna" vilket jag får en känsla kan leda till mycket problem om man fastnar på specifika saker. Jag tycker även att MySQL har ett bättre arbetsätt när man arbetar med det i jämförelse med SQLite, och jag tyckte labbmiljön var smidig när man väll fick den att fungera. I SQLITE känns det lite små finnurligt att sitta med kommandotolken. Finns säkert här smartare sätt man kan manipulera data i SQLite, men inget som vi riktigt gick igenom i denna MVC-kursen.
+        <br>
+        Fördelen med ORM tillskillnad är dock att mycket kod skapas automatiskt. Klasser och databas skapas sömmlöst och det går väldigt fort att sätta upp funktioner för att få ut data snabbt. Den har även exempel kod man kan uttnyttja för att få ut vissa objekt, flera objekt men bara enskilda värden från varje. Allting blir väldigt snabbt och smidigt.
+        En stor fördel är också att man inte behöver lära sig olika programmeringsspråk dessutom, du sitter med samma programmeringsspråk, istället för att behöva byta mellan två, man sitter väldigt sällan med SQL.
+        </p>
+        <p>
+        Likheterna är annars ganska många, eftersom dom i slut ändan grundar sig på SQL och även en strukturerad databas princip. Det är liknande tänk vad gäller skapandet av CRUD applikationer, och sättet hur man söker efter specifika värden från tabellerna. 
+        </p>
+        </p>
+{% endblock %}

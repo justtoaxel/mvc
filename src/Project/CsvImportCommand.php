@@ -12,8 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
- * Class CsvImportCommand
- * @package AppBundle\ConsoleCommand
+ * Class CsvImportCommand.
  */
 class CsvImportCommand extends Command
 {
@@ -25,8 +24,6 @@ class CsvImportCommand extends Command
     /**
      * CsvImportCommand constructor.
      *
-     * @param EntityManagerInterface $em
-     *
      * @throws \Symfony\Component\Console\Exception\LogicException
      */
     public function __construct(EntityManagerInterface $em)
@@ -37,7 +34,8 @@ class CsvImportCommand extends Command
     }
 
     /**
-     * Configure
+     * Configure.
+     *
      * @throws \Symfony\Component\Console\Exception\InvalidArgumentException
      */
     protected function configure()
@@ -49,10 +47,8 @@ class CsvImportCommand extends Command
     }
 
     /**
-     * @param InputInterface  $input
-     * @param OutputInterface $output
-     *
      * @return void
+     *
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -61,14 +57,13 @@ class CsvImportCommand extends Command
         $io->title('Attempting import of Feed...');
 
         $reader = Reader::createFromPath('%kernel.root_dir%/../src/Project/tableData.csv');
-        $results = $reader->setHeaderOffset(0); //explicitly sets the CSV document header record
+        $results = $reader->setHeaderOffset(0); // explicitly sets the CSV document header record
         // https://github.com/thephpleague/csv/issues/208
         $results = $reader->getRecords();
 
         $io->progressStart(iterator_count($results));
 
         foreach ($results as $row) {
-
             // do a look up for existing person matching first + last + dob
             // or create new person$
             $persontransport = (new Persontransport())
@@ -89,10 +84,10 @@ class CsvImportCommand extends Command
                     'varmepumpar' => $row['varmepumpar'],
                     'solenergi' => $row['solenergi'],
                     'totalgron' => $row['totalgron'],
-                    'totalenergi' => $row['totalenergi']
+                    'totalenergi' => $row['totalenergi'],
                 ]);
 
-            if ($renewable === null) {
+            if (null === $renewable) {
                 // or create new renewable
                 $renewable = (new Renewable())
                     ->setBiobransle($row['biobransle'])

@@ -14,16 +14,16 @@ class Persontransport
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $vagtrafik = null;
+    public ?int $vagtrafik = null;
 
     #[ORM\Column]
-    private ?int $bantrafik = null;
+    public ?int $bantrafik = null;
 
     #[ORM\Column]
-    private ?int $sjofart = null;
+    public ?int $sjofart = null;
 
     #[ORM\Column]
-    private ?int $luftfart = null;
+    public ?int $luftfart = null;
 
     public function getId(): ?int
     {

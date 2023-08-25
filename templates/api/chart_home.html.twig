@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Report{% endblock %}
+
+{% block body %}
+    <div class="two-col-layout">
+    <main class="main">
+        <article class="article">
+        <h1>Projekt API</h1>
+
+    <h2 id="kmom1">JSON-Routes</h2>
+    <ul>
+            <a href="{{ path('proj_transports') }}"><h3>Show Transports</h3></a>
+            <a href="{{ path('proj_renewables') }}"><h3>Show Renewables</h3></a>
+            <a href="{{ path('renewable_by_type') }}"><h3>Visa Vattenkraft</h3></a>
+        <form method="post" action="">
+    <p>
+        <input type="submit" name="roll" value="Shuffle"
+            onClick="this.form.action='{{ path('api_shuffle') }}';"
+        >
+        <input type="submit" name="save" value="Draw One"
+            onClick="this.form.action='{{ path('api_drawOne') }}';"
+        >
+        <input type="submit" name="restart" value="Draw Several"
+            onClick="this.form.action='{{ path('api_drawSeveral', {num: 5}) }}';"
+        >
+    </p>
+    </form>
+    <a href="{{ path('api_game') }}"><h3>Visa status för Spelet-21</h3></a>
+    <a href="{{ path('book_show_all_api') }}"><h3>Visa alla böcker</h3></a>
+    <a href="{{ path('book_by_id_api', {isbn:1457483629}) }}"><h3>Visa Bok med ISBN</h3></a>
+        </ul>
+        </article>
+    </main>
+
+</div>
+{% endblock %}

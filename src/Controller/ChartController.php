@@ -1,113 +1,139 @@
 <?php
+
 // ...
+
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
-use Symfony\UX\Chartjs\Model\Chart;
-use App\Entity\Persontransport;
-use App\Entity\Renewable;
 use App\Repository\PersontransportRepository;
 use App\Repository\RenewableRepository;
-use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
+use Symfony\UX\Chartjs\Model\Chart;
 
 class ChartController extends AbstractController
 {
-    #[Route('proj', name: 'proj')]
-    public function chartHome(ChartBuilderInterface $chartBuilder): Response
-    {
-        $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
+    #[Route('proj', name: 'proj', methods: ['GET'])]
+    public function showAllProj(
+        RenewableRepository $renewableRepository,
+        PersontransportRepository $persontransportRepository,
+        ChartBuilderInterface $chartBuilder
+    ): Response {
+        $renewables = $renewableRepository
+        ->findAll();
+        $biobransle = array_column($renewables, 'biobransle');
+        $vattenkraft = array_column($renewables, 'vattenkraft');
+        $varmepumpar = array_column($renewables, 'varmepumpar');
+        $solenergi = array_column($renewables, 'solenergi');
+        $totalgron = array_column($renewables, 'totalgron');
+        $totalenergi = array_column($renewables, 'totalenergi');
 
+        $transports = $persontransportRepository
+        ->findAll();
+        $vagtrafik = array_column($transports, 'vagtrafik');
+        $bantrafik = array_column($transports, 'bantrafik');
+        $sjofart = array_column($transports, 'sjofart');
+        $luftfart = array_column($transports, 'luftfart');
+
+        $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
         $chart->setData([
-            'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            'labels' => ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'],
             'datasets' => [
                 [
-                    'label' => 'My First dataset',
-                    'data' => [0, 10, 5, 2, 20, 30, 45],
-                    'backgroundColor' => [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
-                      ],
-                      'hoverOffset' => '4',
-                      'borderWidth' => '1'
+                    'label' => 'Biobränsle',
+                    'backgroundColor' => 'rgb(120, 161, 187, 0.5)',
+                    'borderColor' => 'rgb(120, 161, 187, 0.5)',
+                    'data' => array_reverse($biobransle),
+                ],
+                [
+                    'label' => 'Vattenkraft',
+                    'backgroundColor' => 'rgb(219, 80, 74, 0.5)',
+                    'borderColor' => 'rgb(219, 80, 74, 0.5)',
+                    'data' => array_reverse($vattenkraft),
+                ],
+                [
+                    'label' => 'Värmepumpar',
+                    'backgroundColor' => 'rgb(147, 196, 139, 0.5)',
+                    'borderColor' => 'rgb(147, 196, 139, 0.5)',
+                    'data' => array_reverse($varmepumpar),
+                ],
+                [
+                    'label' => 'Solenergi',
+                    'backgroundColor' => 'rgb(252, 191, 73, 0.5)',
+                    'borderColor' => 'rgb(252, 191, 73, 0.5)',
+                    'data' => array_reverse($solenergi),
                 ],
             ],
         ]);
 
-        $data = [
-            'chart' => $chart
-        ];
-
-        return $this->render('proj/home.html.twig', $data);
-    }
-    #[Route('proj/show', name: 'proj_show', methods: ['GET'])]
-    public function showAllProj(
-        RenewableRepository $renewableRepository,
-        ChartBuilderInterface $chartBuilder
-    ): Response {
-        
-            $person = $renewableRepository->find(3);
-            $bio = $person->getBiobransle();
-            $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
-            print_r($bio);
-            $chart->setData([
-                'labels' => ['2015', '2016', '2017', 'April', 'May', 'June', 'July'],
-                'datasets' => [
-                    [
-                        'label' => 'My First dataset',
-                        'data' => [$bio, 10, 5, 2, 20, 30, 45],
-                        'backgroundColor' => [
-                            'rgb(255, 99, 132)',
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 205, 86)'
-                        ],
-                        'hoverOffset' => '4',
-                        'borderWidth' => '1'
-                    ],
+        $chart2 = $chartBuilder->createChart(Chart::TYPE_LINE);
+        $chart2->setData([
+            'labels' => ['2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'],
+            'datasets' => [
+                [
+                    'label' => 'Total Energi Grön',
+                    'backgroundColor' => 'rgb(147, 196, 139, 0.5)',
+                    'borderColor' => 'rgb(147, 196, 139, 0.5)',
+                    'data' => array_reverse($totalgron),
                 ],
-            ]);
+                [
+                    'label' => 'Total Energi',
+                    'backgroundColor' => 'rgb(252, 191, 73, 0.5)',
+                    'borderColor' => 'rgb(252, 191, 73, 0.5)',
+                    'data' => array_reverse($totalenergi),
+                ],
+            ],
+        ]);
 
-            $data = [
-                'chart' => $chart
-            ];
+        $chart3 = $chartBuilder->createChart(Chart::TYPE_LINE);
+        $chart3->setData([
+            'labels' => ['2015', '2016', '2017', '2018', '2019', '2020'],
+            'datasets' => [
+                [
+                    'label' => 'Vägtrafik',
+                    'backgroundColor' => 'rgb(120, 161, 187, 0.5)',
+                    'borderColor' => 'rgb(120, 161, 187, 0.5)',
+                    'data' => array_reverse($vagtrafik),
+                ],
+                [
+                    'label' => 'Bantrafik',
+                    'backgroundColor' => 'rgb(219, 80, 74, 0.5)',
+                    'borderColor' => 'rgb(219, 80, 74, 0.5)',
+                    'data' => array_reverse($bantrafik),
+                ],
+                [
+                    'label' => 'Sjöfart',
+                    'backgroundColor' => 'rgb(147, 196, 139, 0.5)',
+                    'borderColor' => 'rgb(147, 196, 139, 0.5)',
+                    'data' => array_reverse($sjofart),
+                ],
+                [
+                    'label' => 'Luftfart',
+                    'backgroundColor' => 'rgb(252, 191, 73, 0.5)',
+                    'borderColor' => 'rgb(252, 191, 73, 0.5)',
+                    'data' => array_reverse($luftfart),
+                ],
+            ],
+        ]);
+        $data = [
+            'chart' => $chart,
+            'chart2' => $chart2,
+            'chart3' => $chart3,
+        ];
 
         return $this->render('proj/show.html.twig', $data);
     }
-    
-
-    #[Route("/proj/api", name: "proj_api", methods: ['GET'])]
-    public function projAPI(
-        SessionInterface $session
-    ): Response {
-
-
-        $data = [
-        "test" => 'test',
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-        $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-    }
 
     #[Route('proj/about', name: 'proj_about')]
-    public function index(ChartBuilderInterface $chartBuilder): Response
-    {
-        
-
-        $data = [
-            'chart' => $chart
-        ];
-
-        return $this->render('proj/home.html.twig', $data);
+    public function projAbout(
+    ): Response {
+        return $this->render('proj/home.html.twig');
     }
 
+    #[Route('proj/about/database', name: 'proj_about_database')]
+    public function projDatabase(
+    ): Response {
+        return $this->render('proj/about_db.html.twig');
+    }
 }

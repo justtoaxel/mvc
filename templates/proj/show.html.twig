@@ -1,22 +1,83 @@
-{% extends "base.html.twig" %}
+{% extends "projbase.html.twig" %}
 
-{% block title %}Showing Library{% endblock %}
+{% block title %}Förnyelsebar Energi{% endblock %}
 
 {% block body %}
-    <div class="two-col-layout">
+
     <main class="main">
         <article class="article">
-        <h1>/Show Library</h1>
+        <h3>Förnyelsebar Energi</h3>
 
-    <h2 id="kmom1">Här kan du se alla böcker</h2>
+    <h2 id="kmom1">Visualisering av Agenda 2030</h2>
     
+    <h3 style="margin-top: 50px;";>Föreskrift</h3>
+    <p>
+    Datan för denna studie kommer från SCBs "Agenda 30". I denna studie så kommer den redogörelse och analys som görs av de två indikatorer, att utgå från den data som är tillgänglig via SCBs - "Agenda 2030", med fokus på Sverige. Datan som använts för studien har sina luckor och uppgår även som högst bara tills 2020. För vissa data som till exempel de som finns i Mål 9 - "Hållbar Energi för alla", så saknas data för år 2020, och därför uteblir år som dessa från graferna.
+    </p>
+     <h3> 
+    Introduktion
+    </h3>
+    <p>
+    En av de mest väldebatterade ämnena i dagens samhälle är klimatförändring och enligt vissa den viktigaste frågan för den moderna mänskligheten. Ett ämne med många ovissheter och ett fåtal klarheter. Det är väldigt vanligt att många människor har starka åsikter kring ämnet, vilket inte är konstigt med tanke på dess inflytande som syns i de påtryckningar av stat och myndighet att få b.la högskolor att inkludera dessa i läroplaner som inte alltid bör beröra ämnet. Däröver kan även klimatförändringen ha fatala konsekvenser för den moderna människan och det globala ekosystemet, vilket skulle kunnat leda till en domedags liknande kollaps på jorden. Ungefär i dessa två linjer dras skildringarna men i många fall kan det kanske vara intressant att titta på de faktiska siffrorna istället för att endast se till nyhetsartiklar.
+    I denna studie kommer vi se över den information som tillhandages av SCB, rörande "Mål 7 - Hållbar energi åt alla" och Mål 9 - "Hållbar inudstri, innovationer och infrastruktur". Från Mål 7 kommer vi att kolla på den hur stor del av svensk elkonsumtion som är grön samt från vilken källa dessa kommer ifrån. I mål 7 kommer vi att se i vilket mån olika fordonstyper används i persontransporten för att se om det finns en intressant iaktegelse som kan göras mellan dessa två indikatorer och huruvida bra Sverige har varit på att följa trenden mot en "grönare" värld.
+    </p>
+    <div class="container">
+    <div class="text-container">
+    <h3> 
+    Den Gröna Elen
+    </h3>
     <div class="chartContainer">
         {{ render_chart(chart, {'class': 'my-chart'}) }}
-        </div>
-    </table>
+        <a class="ref" target=”_blank” href="https://www.scb.se/hitta-statistik/temaomraden/agenda-2030/mal-7">(SCB, 2022: TWh förnybar energi producerad per år)</a>
+    </div>
+    <p>
+    I just denna debatt om klimatförändring är den grön energin ett väldigt hett ämne. Många tror till exempel att solpaneler på varje svenskt hustak kan subventionera stora delar av energiomsättningen i jämförelse med andra mer ekologiskt skadliga energi källorna. Om vi ser till statistiken kan vi dock se att solenergi än så länge bara uppgår till 1% och har långa vägar att gå.
+    till del för att det endast finns cirka 148 000 "solcellsanläggningar" <a class="ref" target=”_blank” href="https://www.energimyndigheten.se/nyhetsarkiv/2023/antalet-solcellsanlaggningar-fortsatter-att-oka/">(Energimyndigheten, 2022)</a>, det vill säga fastigheter med solceller, privat såväl som hos företag. Utöver detta är Sverige även ett land som har förhållandevis lite sol per år, så kan energin genererad av solceller anses tämligen onödig,
+    speciellt i åtanke på dess skadliga produktion ka det kännas tämligen onödigt.
+    </p>
+    <p>
+    Tittar vi vidare kan vi se att till skillnad från Solenergi så är biobränsle något som markant vuxit i dess användning medans flera av de andra värmekällorna tenderar att vara relativt stagnerad. Viktigt att bemärka är att biobränslet används främst inom skogsindustrin och el- och fjärrvärmesproduktion där instustrierna drar respektive 40 procent vardera <a class="ref" target=”_blank” href="https://www.naturskyddsforeningen.se/artiklar/vanliga-fragor-om-biobranslen/">(Naturskyddsforeningen, 2021)</a>. Det som kan häröras från dessa sammanband är att industrin är den som konsumerar mest och därmed driver energipolitiken mest.
+    Nämnvärt kan dock vara att även om siffrorna för just värmepumpar ser låg så har produktionen blivit i princip 2,5 gånger som hög 2019 som den var i 2005, vilket till stor del är pågrund av använding för uppvärmning av hushåll. 
+    </p>
+    <p>
+    Nämnvärt som sista fotnot är att vattenkraft som har tillsynes stagnerat, inte är i säg en negativ indikator men snarare en god indikator för dess tillförlitlighet. Dessutom att den är nästa högst producerande gröna energi källan visar på dess vikt som en "grön" grund i svenska elproduktionen. Nackdelen är dock att det är en limiterat källa av energi, då vi troligtvis byggt vattenkraft i de flesta vattendragen där vi kan bygga dom och har inte särskilt många fler att "utvinna".
+    </p>
+    </div>
+    </div>
+    <div class="chartContainer">
+        {{ render_chart(chart2, {'class': 'my-chart'}) }}
+        <a class="ref" target=”_blank” href="https://www.scb.se/hitta-statistik/temaomraden/agenda-2030/mal-7">(SCB, 2022: TWh konsumerad per år)</a>
+    </div>
+
+    <p>
+    I ovan graf kan vi se förändringen av det energibehov som Sverige haft. Där den gula linjen representerar total svensk konsumtion medans den gröna representerar den som bara producerats av grön energi. Datan påvisar att svenska energisektorn har haft en god omställning från 2005 till 2019, där ökningen av grön energi är 1.35 gånger 2005. Samtidigt som det ser ut som att den svenska total konsumtionen av energi stannat inom ett spann med differens på ca 20 Twh per år. Goda nyheter för de som vill se en sådan omställning. Det finns dock skäl till förbehåll gällande dessa siffror. Jämför man denna graf med den tidigare, så kan man återigen konstatera biobränsle var den som stod för den största förändringen av detta, men problemet med biobränsle är att dess påverkan på naturen är ganska oklar.
+    Det finns flertal olika variationer på biobränslen och samhället är inte riktigt enig vad gäller konsekvenser av dess användning som helhet. Det man vet att det finns skillnader på olika  och dess miljöpåverkan, men enligt lagstiftning finns det inte särskiljning <a class="ref" target=”_blank” href="https://www.naturskyddsforeningen.se/artiklar/vanliga-fragor-om-biobranslen/">(Naturskyddsföreningen, 2022)</a>. Detta belyser till del en del av den politiska maktkamp som sker i debatten kring vad som är grön energi eller inte. Kärnkraft är ett exempel av "brun" el, som trots stämpeln inte har några utsläpp av skadliga ämnen, såvitt det inte sker katastrofer likt Chernobyl, och på så sätt skulle till och med kunnas antas vara mindre skadlig än biobränslen.
+    Beroende på dessa defintioner av vad som är grönt och inte grönt kan perspektivet på en god utveckling eller inte vara svår att avgöra, och även börja ställa frågor som ifrågasätter vare sig den gröna energin verkligen kan räcka till. Detta leder oss in till nästa indikatorn, den hållbara infrastrukturen.
+    </p>
+
+    <h3> 
+    Den Gröna Infrastrukturen
+    </h3>
+     <div class="chartContainer">
+        {{ render_chart(chart3, {'class': 'my-chart'}) }}
+        <a class="ref" target=”_blank” href="https://www.scb.se/hitta-statistik/temaomraden/agenda-2030/mal-7">(SCB, 2022: TWh konsumerad per år, data saknas för vägtrafik 2015)</a>
+    </div>
+    <p>
+    Tittar vi på ovan graf kan vi see antalet av personkilometer ökat för var år som gått i varje kategori, förutom för luftfart under år 2019, och 2020 som dock är ett annorlunda år pågrund av Corona. För analys av just den gröna energin kan det vara rimligt att exkluder sjöfart och luftfart som en indikator, som sammanhänger med just grön el, eftersom varken av dem kommer använda el inom den närmaste framtiden. Bantrafiken använder ju som vi vet el och denna kommer med stor sanolikhet fortsätta att se en ökning vilket kommer vara en ökad påfrestning på det svenska elnätet. Den intressantaste faktorn inom persontransport är egentligen vägtrafiken.
+    Vägtrafiken är just intressant eftersom majoriteten av bilar har varit bensin och diesel drivna så har elnätet inte varit belastat. EU har infört ett förbud av nya bensin och dieselbilar från och med 2035, vilket kommer leda till en intressant omställning av just vägtrafiken <a class="ref" target=”_blank” href="https://www.europarl.europa.eu/news/sv/headlines/economy/20221019STO44572/eu-s-forbud-mot-forsaljning-av-nya-bensin-och-dieselbilar">(EU Parlamentet, 2022: TWh konsumerad per år)</a>. Detta innebär troligtvis en omställning till elbilar då det inte finns några filter ännu som kommer kunna att filtrera ut alla koldioxids utsläpp
+    och det med stor sanolikhet inte kommer finnas något sånt inom snart framtid. Vad skulle då en omställning av samtliga bensin och diesel bilar innebära i ökad elkonsumtion? Det verkar inte riktigt finnas någon siffra för detta, men med stor sanolikhet så har vi i nuvarande takt inte ha tillräckligt hög elproduktion på förnyelsebara medel, vilket leder oss till att använda fossila bränslen. Förhoppnings kanske någon av de samhällsorienterade akademikerna utföra en studie om denna omställning verkligen är möjlig.
+    </p>
     
+
+    <h3> 
+    Sammafattning
+    </h3>
+    <p>
+    Agenda 2030 är ett intressant försök att få människor att tänka mer kring saker som klimatet. Dock tror jag att det finns en tendens att målen känns nästintill orimlig. Det börjar redan i den tidigare redogjorda exemplet av defintionen av grön energi där byråkratin har en relativt orationell bedömning av vad som anses vara miljövänligt eller inte. Det verkar inte heller vara en definition som är grundad i någon matematisk eller vetenskaplig process. Detta leder i sin tur att vissa människor kanske finner en viss skepticism till indikatorerna som visas, då ämnet blir politiskt färgat, vilket leder till många olika motsättningar från olika håll. Utöver detta så är faktumet, som tidigare, nämnts att man försöker lära ut detta som en form av allmän lära i universitet och högskola, möjligtvis lite onödigt då de flesta elever troligtvis redan haft undervisning inom ämnet i högstadie och gymnasie.
+    Risken är då att människor snarare finner ämnet tjatigt snarare än något som är viktigt och intressant.
+    </p>
     </article>
     </main>
 
-</div>
+
 {% endblock %}

@@ -4,5 +4,7 @@ parameters:
         - config
         - src
         - tests
+    excludePaths:
+        - src/Project
     bootstrapFiles:
         #- .phpstan.constants.php

@@ -2,19 +2,19 @@
 
 namespace App\Controller;
 
+use App\Entity\Book;
+use App\Repository\BookRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Book;
-use Doctrine\Persistence\ManagerRegistry;
-use App\Repository\BookRepository;
-use Symfony\Component\HttpFoundation\Request;
 
 class ProductController extends AbstractController
 {
     #[Route('/library', name: 'book_library')]
     public function index(): Response
-    {        
+    {
         return $this->render('product/index.html.twig', [
             'controller_name' => 'ProductController',
         ]);
@@ -23,7 +23,6 @@ class ProductController extends AbstractController
     #[Route('/library/create', name: 'book_create')]
     public function createProduct(
     ): Response {
-
         return $this->render('product/create.html.twig');
     }
 
@@ -32,7 +31,6 @@ class ProductController extends AbstractController
         ManagerRegistry $doctrine,
         Request $request
     ): Response {
-
         $name = $request->request->get('name');
         $author = $request->request->get('author');
         $isbn = $request->request->get('isbn');
@@ -64,12 +62,11 @@ class ProductController extends AbstractController
             ->findAll();
 
         $data = [
-            "bookArray" => $books
+            'bookArray' => $books,
         ];
 
         return $this->render('product/show.html.twig', $data);
     }
-    
 
     #[Route('/library/show/{id}', name: 'book_by_id', methods: ['GET'])]
     public function showBookById(
@@ -83,16 +80,16 @@ class ProductController extends AbstractController
         $isbn = $book->getIsbn();
         $img = $book->getImg();
         $data = [
-            "name" => $name,
-            "author" => $author,
-            "ISBN" => $isbn,
-            "img" => $img
+            'name' => $name,
+            'author' => $author,
+            'ISBN' => $isbn,
+            'img' => $img,
         ];
 
         return $this->render('product/show_one.html.twig', $data);
     }
 
-    #[Route('/library/delete', name: 'book_delete_by_id', methods:['POST'])]
+    #[Route('/library/delete', name: 'book_delete_by_id', methods: ['POST'])]
     public function deleteBookById(
         ManagerRegistry $doctrine,
         Request $request
@@ -103,15 +100,13 @@ class ProductController extends AbstractController
 
         print_r($id);
         if (!$book) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
+            throw $this->createNotFoundException('No product found for id '.$id);
         }
 
         $entityManager->remove($book);
         $entityManager->flush();
 
-        //return $this->render('product/show.html.twig');
+        // return $this->render('product/show.html.twig');
         return $this->redirectToRoute('book_show_all');
     }
 
@@ -129,23 +124,21 @@ class ProductController extends AbstractController
         $isbn = $book->getIsbn();
         $img = $book->getImg();
         $data = [
-            "id" => $id,
-            "name" => $name,
-            "author" => $author,
-            "ISBN" => $isbn,
-            "img" => $img
+            'id' => $id,
+            'name' => $name,
+            'author' => $author,
+            'ISBN' => $isbn,
+            'img' => $img,
         ];
 
         return $this->render('product/update.html.twig', $data);
     }
 
-
-    #[Route('/library/update', name: 'book_update_confirm', methods:['POST'])]
+    #[Route('/library/update', name: 'book_update_confirm', methods: ['POST'])]
     public function updateProduct(
         ManagerRegistry $doctrine,
         Request $request
     ): Response {
-
         $id = $request->request->get('id');
         $entityManager = $doctrine->getManager();
         $book = $entityManager->getRepository(Book::class)->find($id);
@@ -156,9 +149,7 @@ class ProductController extends AbstractController
         $img = $request->request->get('img');
 
         if (!$book) {
-            throw $this->createNotFoundException(
-                'No book found for id '.$id
-            );
+            throw $this->createNotFoundException('No book found for id '.$id);
         }
 
         $book->setName($name);

@@ -2,8 +2,6 @@
 
 namespace App\Card;
 
-use App\Card\Card;
-
 class BankHand
 {
     private $bank = [];
@@ -16,7 +14,8 @@ class BankHand
     public function addCards(array $cards): array
     {
         $addedCards = array_replace($this->bank, $cards);
-        //print_r($addedCards);
+
+        // print_r($addedCards);
         return $this->bank = $addedCards;
     }
 
@@ -29,5 +28,4 @@ class BankHand
     {
         return array_sum($this->bank);
     }
-
 }

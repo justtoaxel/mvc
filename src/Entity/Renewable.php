@@ -14,25 +14,25 @@ class Renewable
     private ?int $id = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $biobransle = null;
+    public ?int $biobransle = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $vattenkraft = null;
+    public ?int $vattenkraft = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $vindkraft = null;
+    public ?int $vindkraft = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $varmepumpar = null;
+    public ?int $varmepumpar = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $solenergi = null;
+    public ?int $solenergi = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $totalgron = null;
+    public ?int $totalgron = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $totalenergi = null;
+    public ?int $totalenergi = null;
 
     public function getId(): ?int
     {

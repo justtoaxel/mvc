@@ -3,11 +3,9 @@
 {% block title %}Adventure{% endblock %}
 
 {% block body %}
-    <h1 style="text-align:center;">RUNSTEN</h1>
-        <p style="text-align:center;">Hej, mitt namn är Axel. Jag är en tidigare student för en kandidatexamen i företagsekonomi. Efter utbytesstudier utomlands började jag arbeta på ett företag som ekonom och blev trött på det. Jag hade mest erfarenhet inom IT i det företaget då jag utvecklat hemsidor som hobby en sommar, och sakta så blev IT 50% av min arbetsroll, något som jag föredrog. Jag började därefter som egenföretagare inom IT med ett antal kunder och är nu i början av en process där jag ska lansera ett dataspel.
-        <p style="text-align:center;">Jag sökte just denna kurs eftersom den innefattade databaser, något som jag är mycket intresserad av. Jag behöver även sammanlänka SQL med det databas system som jag har i mitt spel, så det har även gett mig ännu ett motiv att se fram mot databas de orienterade moment vi kommer att studera då det verkar nyttigt att kunna både i allmänhet men även för mina egna projekt 😀</p>
+    <h1 style="text-align:center;">Om Projektet</h1>
+        <p>
+            Detta projekt är tanken att göra en översiktlig analys av svensk energi politik och statistiken bakom denna. Statistiken kommer från SCB:s "Agenda 2030" sektion, som är en samling av olika indikatorer för en hållbar värld. Denna sektionen har data relaterat till elproduktion i Sverige samt siffror kring infrastruktur och transport. I detta projekt är tanken att ge en inblick i de faktiska siffrorna som finns för ett ämne som är ganska populärt i debatt, och kanske är intressant då många framtida regelverk har börjat införas för en mer grön framtid. Datan i detta projekt är tagen från hemsidan och organiserad i en CSV fil som sedan importeras av ett skript för att fylla två tabeller i en SQLite databas. 
         </p>
-        <div class="chartContainer">
-        {{ render_chart(chart, {'class': 'my-chart'}) }}
-        </div>
+        <a style="text-align: center;" class="button" href="{{ path('proj_about_database') }}">Läs om Databasen</a>
 {% endblock %}
