@@ -77,51 +77,39 @@ php --version
 
 ```
 
-### php-cs-fixer
+### Installing Linting and Analytics Tools
 
 ```
-
-composer require friendsofphp/php-cs-fixer --dev
-
-```
-
-### phpmd
-
-```
-
-composer require phpmd/phpmd --dev
-
-```
-
-### phpstan
-
-```
-
-composer require phpstan/phpstan --dev
-
-```
+# Go to the root of your Symfony app directory
+#CSFixer
+mkdir --parents tools/php-cs-fixer
+composer require --working-dir=tools/php-cs-fixer friendsofphp/php-cs-fixer
+#PHPMd
+mkdir --parents tools/phpmd
+composer require --working-dir=tools/phpmd phpmd/phpmd
+#PHPStan
+mkdir --parents tools/phpstan
+composer require --working-dir=tools/phpstan phpstan/phpstan
+#PHPDoc
+mkdir --parents tools/phpdoc
+wget -P --parents/phpdoc  https://phpdoc.org/phpDocumentor.phar
+#PHPMetrics
+mkdir --parents tools/phpmetrics
+composer require --working-dir=tools/phpmetrics phpmetrics/phpmetrics
 
 ### phpunit
 
 ```
 
+```
+#PHPUnit
 composer require phpunit/phpunit --dev
 
 ```
 
-### phpdoc
-
 ```
-
-composer require phpdocumentor/phpdocumentor --dev
-
-```
-
-### phpmetrics
-
-```
-
-composer require phpmetrics/phpmetrics --dev
+# Run composer
+composer install
 
 ```
 
